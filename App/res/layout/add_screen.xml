@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imgViewPicture"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:contentDescription="KosPicture" />
+
+            <Button
+                android:id="@+id/btnLoadPicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0"
+                android:onClick="btnLoadPicture_onClick"
+                android:scrollbars="horizontal"
+                android:text="Load Picture" />
+
+            <TextView
+                android:id="@+id/lblOwnersName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:text="Nama Pemilik" />
+
+            <EditText
+                android:id="@+id/txtOwnersName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:ems="8"
+                android:hint="Nama Pemilik"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/lblAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:text="Alamat" />
+
+            <EditText
+                android:id="@+id/txtAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:ems="8"
+                android:hint="Alamat"
+                android:inputType="textPostalAddress" />
+
+            <TextView
+                android:id="@+id/lblPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:text="No Telepon" />
+
+            <EditText
+                android:id="@+id/txtPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:ems="8"
+                android:hint="No Telepon"
+                android:inputType="phone" />
+
+            <TextView
+                android:id="@+id/lblRent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:text="Harga Sewa" />
+
+            <EditText
+                android:id="@+id/txtRent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:ems="8"
+                android:hint="Harga Sewa"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/lblFacilities"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:text="Fasilitas" />
+
+            <EditText
+                android:id="@+id/txtFacilities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:ems="8"
+                android:hint="Fasilitas"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/lblDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:text="Deskripsi" />
+
+            <EditText
+                android:id="@+id/txtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:ems="8"
+                android:hint="Deskripsi"
+                android:inputType="textLongMessage|textMultiLine" />
+
+            <Button
+                android:id="@+id/btnSavePoint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:onClick="btnSavePoint_onClick"
+                android:text="Save" />
+        </LinearLayout>
+    </ScrollView>

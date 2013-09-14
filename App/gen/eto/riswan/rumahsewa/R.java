@@ -143,7 +143,7 @@ containing a value of this type.
         public static final int ic_splash=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f040023;
+        public static final int action_settings=0x7f040022;
         public static final int btnAbout=0x7f040009;
         public static final int btnHelp=0x7f04000a;
         public static final int btnInfoRumahSewa=0x7f040006;
@@ -153,7 +153,7 @@ containing a value of this type.
         public static final int btnSekilasUika=0x7f040005;
         public static final int btnTambahLokasi=0x7f040008;
         public static final int hybrid=0x7f040004;
-        public static final int imageView1=0x7f040022;
+        public static final int imageView1=0x7f040021;
         public static final int imgViewPicture=0x7f04000b;
         public static final int lblAddress=0x7f04000f;
         public static final int lblDescription=0x7f040017;
@@ -161,18 +161,17 @@ containing a value of this type.
         public static final int lblOwnersName=0x7f04000d;
         public static final int lblPhoneNumber=0x7f040011;
         public static final int lblRent=0x7f040013;
+        public static final int lstFacilities=0x7f040020;
+        public static final int lstPrice=0x7f04001e;
         public static final int map=0x7f04001a;
         public static final int none=0x7f040000;
         public static final int normal=0x7f040001;
-        public static final int radioButton1=0x7f04001e;
-        public static final int radioButton2=0x7f04001f;
-        public static final int radioButton3=0x7f040021;
         public static final int satellite=0x7f040002;
         public static final int terrain=0x7f040003;
         public static final int textView1=0x7f04001b;
         public static final int textView2=0x7f04001c;
         public static final int textView3=0x7f04001d;
-        public static final int textView4=0x7f040020;
+        public static final int textView4=0x7f04001f;
         public static final int txtAddress=0x7f040010;
         public static final int txtDescription=0x7f040018;
         public static final int txtFacilities=0x7f040016;
@@ -181,18 +180,24 @@ containing a value of this type.
         public static final int txtRent=0x7f040014;
     }
     public static final class idMap {
-        public static final int txtDetailMapTitle=0x7f090000;
+        public static final int action_list=0x7f0a0000;
+        public static final int action_map=0x7f0a0001;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int add_screen=0x7f030001;
         public static final int detail_screen=0x7f030002;
         public static final int map_screen=0x7f030003;
-        public static final int search_screen=0x7f030004;
-        public static final int splash_screen=0x7f030005;
+        public static final int radio_list_item=0x7f030004;
+        public static final int search_screen=0x7f030005;
+        public static final int splash_screen=0x7f030006;
     }
     public static final class menu {
         public static final int main=0x7f080000;
+        public static final int maps=0x7f080001;
+    }
+    public static final class simpleId {
+        public static final int radioListTextView=0x7f090000;
     }
     public static final class string {
         public static final int action_settings=0x7f050012;

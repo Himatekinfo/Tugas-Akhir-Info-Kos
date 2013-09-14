@@ -25,8 +25,7 @@ class SiteController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
-        $model = Incident::model()->findAll();
-        $this->render('index', array('model' => $model));
+        echo "Hello";
     }
 
     /**

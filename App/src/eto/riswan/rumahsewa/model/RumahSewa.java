@@ -1,5 +1,8 @@
 package eto.riswan.rumahsewa.model;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import android.provider.Settings;
 
 import com.j256.ormlite.field.DatabaseField;
@@ -37,7 +40,18 @@ public class RumahSewa {
 	@DatabaseField(width = 500)
 	public String Description;
 
+	@DatabaseField
+	private final Date CreatedDate;
+
+	@DatabaseField
+	private final Boolean IsShyncrhonized;
+
+	public RumahSewa() {
+		this.IsShyncrhonized = false;
+		this.CreatedDate = Calendar.getInstance().getTime();
+	}
+
 	public String getGlobalId() {
-		return Settings.Secure.ANDROID_ID + this.Id.toString();
+		return Settings.Secure.ANDROID_ID + this.Id.toString() + String.valueOf(this.CreatedDate.getTime());
 	}
 }

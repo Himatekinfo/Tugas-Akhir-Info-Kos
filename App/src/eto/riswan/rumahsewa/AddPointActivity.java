@@ -64,6 +64,10 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 		rumahSewaDao.create(rumahSewa);
 
 		Toast.makeText(this, "Data saved successfully.", Toast.LENGTH_LONG).show();
+
+		Intent x = new Intent(AddPointActivity.this, MapActivity.class);
+		this.finish();
+		this.startActivity(x);
 	}
 
 	@Override

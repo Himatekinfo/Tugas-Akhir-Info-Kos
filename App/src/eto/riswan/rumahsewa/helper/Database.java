@@ -21,7 +21,7 @@ public class Database extends OrmLiteSqliteOpenHelper {
 	// name of the database file
 	private static final String DATABASE_NAME = "rumahsewa.db";
 	// any time you make changes to your database objects, you may have to increase the database version
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 
 	// the DAO object we use to cache access from tables
 	private Dao<RumahSewa, Long> rumahSewaDao = null;

@@ -37,7 +37,7 @@ return array(
             ),
         ),
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;port=3307;dbname=erv_polresta_incidentreport',
+            'connectionString' => 'mysql:host=localhost;port=3307;dbname=db_inforumahsewa',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => 'qwe-123',

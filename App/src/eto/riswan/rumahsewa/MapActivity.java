@@ -2,9 +2,11 @@ package eto.riswan.rumahsewa;
 
 import java.util.List;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -19,7 +21,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 import eto.riswan.rumahsewa.core.OrmLiteBaseFragmentActivity;
-import eto.riswan.rumahsewa.helper.GeoLocation;
+import eto.riswan.rumahsewa.helper.Global;
 import eto.riswan.rumahsewa.model.RumahSewa;
 
 public class MapActivity extends OrmLiteBaseFragmentActivity {
@@ -28,6 +30,31 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.showMap();
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		this.getMenuInflater().inflate(R.menu.maps, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case R.idMap.action_list:
+				Intent intent = new Intent(this, ListPointActivity.class);
+				this.startActivity(intent);
+				break;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
+
+		return true;
+	}
+
+	private void showMap() {
 		this.setContentView(R.layout.map_screen);
 
 		this.map = ((SupportMapFragment) this.getSupportFragmentManager().findFragmentById(R.id.map))
@@ -37,8 +64,7 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 		else {
 			this.map.setMyLocationEnabled(true);
 			this.map.getMyLocation();
-			LatLng myLatLng = new LatLng(GeoLocation.getCurrentLocation(this).getLatitude(), GeoLocation
-					.getCurrentLocation(this).getLongitude());
+			LatLng myLatLng = Global.getCenterLocation();
 
 			CameraPosition myPosition = new CameraPosition.Builder().target(myLatLng).zoom(12).build();
 			this.map.animateCamera(CameraUpdateFactory.newCameraPosition(myPosition));
@@ -69,8 +95,8 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 				@Override
 				public View getInfoWindow(Marker arg0) {
 					View v = MapActivity.this.getLayoutInflater().inflate(R.layout.detail_screen, null);
-					TextView txtTest = (TextView) v.findViewById(R.idMap.txtDetailMapTitle);
-					txtTest.setText(arg0.getSnippet());
+					// TextView txtTest = (TextView) v.findViewById(R.idMap.txtDetailMapTitle);
+					// txtTest.setText(arg0.getSnippet());
 					return v;
 				}
 			});

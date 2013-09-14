@@ -33,6 +33,8 @@
         </activity>
         <activity android:name="eto.riswan.rumahsewa.MapActivity" />
         <activity android:name="eto.riswan.rumahsewa.AddPointActivity" />
+        <activity android:name="eto.riswan.rumahsewa.ListPointActivity" />
+        <activity android:name="eto.riswan.rumahsewa.SearchActivity" />
         
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"

@@ -29,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableTop="@android:color/darker_gray"
+        android:onClick="btnPencarian_onClick"
         android:text="Pencarian" />
     
     <Button

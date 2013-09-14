@@ -23,28 +23,22 @@
         android:layout_height="wrap_content"
         android:text="Harga" />
 
-    <RadioButton
-        android:id="@+id/radioButton1"
-        android:layout_width="wrap_content"
+    <ListView
+        android:id="@+id/lstPrice"
+        android:layout_width="fill_parent" 
         android:layout_height="wrap_content"
-        android:text="400-500" />
-
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="500-800" />
-
+        android:choiceMode="singleChoice" />
+     
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fasilitas" />
-
-    <RadioButton
-        android:id="@+id/radioButton3"
-        android:layout_width="wrap_content"
+    
+    <ListView
+        android:id="@+id/lstFacilities"
+        android:layout_width="fill_parent" 
         android:layout_height="wrap_content"
-        android:text="Kamar Mandi Dalam" />
+        android:choiceMode="singleChoice" />
 
 </LinearLayout>

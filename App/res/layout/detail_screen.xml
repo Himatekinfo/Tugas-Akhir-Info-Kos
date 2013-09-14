@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:background="#ffffffff"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="wrap_content"
     	android:layout_height="wrap_content">
         
-        <TextView android:text="test"
-            android:id="@+idMap/txtDetailMapTitle" 
+        <TextView android:text="Nama Pemilik" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        
+        <TextView android:text="Harga Sewa" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        
+        <ImageView
+			android:contentDescription="Photo of location"
+			android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        
+        <TextView android:text="No Telepon" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        
+        <TextView android:text="Fasilitas" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        
+        <TextView android:text="Deskripsi" 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         

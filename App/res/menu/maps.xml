@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+idMap/action_list"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="List"/>
+    
+    <item
+        android:id="@+idMap/action_map"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="Map"/>
+
+</menu>

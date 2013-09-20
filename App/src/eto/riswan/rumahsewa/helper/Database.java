@@ -19,9 +19,11 @@ import eto.riswan.rumahsewa.model.User;
 public class Database extends OrmLiteSqliteOpenHelper {
 
 	// name of the database file
+	// private static final String DATABASE_NAME = Environment.getExternalStorageDirectory().getAbsolutePath()
+	// + File.separator + "rumahsewa.db";
 	private static final String DATABASE_NAME = "rumahsewa.db";
 	// any time you make changes to your database objects, you may have to increase the database version
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 1;
 
 	// the DAO object we use to cache access from tables
 	private Dao<RumahSewa, Long> rumahSewaDao = null;
@@ -33,6 +35,7 @@ public class Database extends OrmLiteSqliteOpenHelper {
 
 	public Database(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		Log.e("Database", "Opening database " + DATABASE_NAME);
 	}
 
 	@Override

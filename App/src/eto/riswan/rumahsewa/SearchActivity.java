@@ -46,7 +46,7 @@ public class SearchActivity extends OrmLiteBaseActivity<Database> {
 			ArrayList<Long> rents = new ArrayList<Long>();
 			Long tmp = (long) 0;
 			for (RumahSewa point : accounts) {
-				tmp = (long) (Math.floor(point.Rent / this.rentRange) * this.rentRange);
+				tmp = (long) (Math.floor(point.rent / this.rentRange) * this.rentRange);
 				if (!rents.contains(tmp)) rents.add(tmp);
 			}
 			Collections.sort(rents);
@@ -93,7 +93,7 @@ public class SearchActivity extends OrmLiteBaseActivity<Database> {
 		List<RumahSewa> accounts = rumahSewaDao.queryForAll();
 		if (accounts.size() > 0)
 			for (RumahSewa point : accounts) {
-				String[] currentFacilities = point.Facilities.split(",");
+				String[] currentFacilities = point.facilities.split(",");
 				for (String facility : currentFacilities)
 					if (!this.arrayListFacility.contains(facility.trim()))
 						this.arrayListFacility.add(facility.trim());

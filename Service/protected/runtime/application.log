@@ -319,3 +319,131 @@ Stack trace:
 #21 {main}
 REQUEST_URI=/svc_rumahsewa/index.php/rumahsewa/
 ---
+2013/09/19 16:00:22 [error] [exception.CException] exception 'CException' with message 'RumahsewaController cannot find the requested view "create".' in D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php:878
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
+#1 D:\Data Skripsi\Riswan\Service\protected\controllers\RumahSewaController.php(78): CController->render('create', Array)
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\actions\CInlineAction.php(49): RumahsewaController->actionCreate()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('create')
+#12 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('rumahsewa/creat...')
+#13 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/rumahsewa/create/
+---
+2013/09/19 16:34:17 [error] [php] Undefined index: error (D:\Data Skripsi\Riswan\Service\protected\controllers\RumahSewaController.php:75)
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): RumahsewaController->runAction()
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): RumahsewaController->filterAccessControl()
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): RumahsewaController->runActionWithFilters()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): RumahsewaController->run()
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\Data Skripsi\Riswan\Service\index.php(13): CWebApplication->run()
+REQUEST_URI=/svc_rumahsewa/index.php/rumahsewa/create/
+in D:\Data Skripsi\Riswan\Service\protected\controllers\RumahSewaController.php (75)
+in D:\Data Skripsi\Riswan\Service\index.php (13)
+2013/09/19 16:37:02 [error] [php] Undefined index: error (D:\Data Skripsi\Riswan\Service\protected\controllers\RumahSewaController.php:75)
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): RumahsewaController->runAction()
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): RumahsewaController->filterAccessControl()
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): RumahsewaController->runActionWithFilters()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): RumahsewaController->run()
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\Data Skripsi\Riswan\Service\index.php(13): CWebApplication->run()
+REQUEST_URI=/svc_rumahsewa/index.php/rumahsewa/create/
+in D:\Data Skripsi\Riswan\Service\protected\controllers\RumahSewaController.php (75)
+in D:\Data Skripsi\Riswan\Service\index.php (13)
+2013/09/19 16:38:52 [error] [php] Invalid argument supplied for foreach() (D:\Data Skripsi\Riswan\Service\protected\controllers\RumahSewaController.php:75)
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): RumahsewaController->runAction()
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): RumahsewaController->filterAccessControl()
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): RumahsewaController->runActionWithFilters()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): RumahsewaController->run()
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\Data Skripsi\Riswan\Service\index.php(13): CWebApplication->run()
+REQUEST_URI=/svc_rumahsewa/index.php/rumahsewa/create/
+in D:\Data Skripsi\Riswan\Service\protected\controllers\RumahSewaController.php (75)
+in D:\Data Skripsi\Riswan\Service\index.php (13)
+2013/09/19 18:48:01 [warning] [application] Failed to set unsafe attribute "created_date" of "Rumahsewa".
+in D:\Data Skripsi\Riswan\Service\protected\controllers\RumahSewaController.php (71)
+in D:\Data Skripsi\Riswan\Service\index.php (13)
+2013/09/19 18:50:22 [warning] [application] Failed to set unsafe attribute "created_date" of "Rumahsewa".
+in D:\Data Skripsi\Riswan\Service\protected\controllers\RumahSewaController.php (71)
+in D:\Data Skripsi\Riswan\Service\index.php (13)
+2013/09/19 19:00:34 [warning] [application] Failed to set unsafe attribute "created_date" of "Rumahsewa".
+in D:\Data Skripsi\Riswan\Service\protected\controllers\RumahSewaController.php (71)
+in D:\Data Skripsi\Riswan\Service\index.php (13)
+2013/09/19 19:00:34 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[HY000]: General error: 1364 Field 'created_date' doesn't have a default value. The SQL statement executed was: INSERT INTO `tbl_rumahsewa` (`id_rumahSewa`, `latitude`, `longitude`, `namapemilik`, `alamat`, `no_telp`, `hargasewa`, `fasilitas`, `deskripsi`, `foto`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9).
+in D:\Data Skripsi\Riswan\Service\protected\controllers\RumahSewaController.php (83)
+in D:\Data Skripsi\Riswan\Service\index.php (13)
+2013/09/19 19:00:34 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 1364 Field 'created_date' doesn't have a default value. The SQL statement executed was: INSERT INTO `tbl_rumahsewa` (`id_rumahSewa`, `latitude`, `longitude`, `namapemilik`, `alamat`, `no_telp`, `hargasewa`, `fasilitas`, `deskripsi`, `foto`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9)' in D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\db\CDbCommand.php:358
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\db\ar\CActiveRecord.php(1077): CDbCommand->execute()
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\db\ar\CActiveRecord.php(806): CActiveRecord->insert(NULL)
+#2 D:\Data Skripsi\Riswan\Service\protected\controllers\RumahSewaController.php(83): CActiveRecord->save()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\actions\CInlineAction.php(49): RumahsewaController->actionCreate()
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('create')
+#13 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('rumahsewa/creat...')
+#14 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/rumahsewa/create/
+---
+2013/09/19 19:28:22 [warning] [application] Failed to set unsafe attribute "created_date" of "Rumahsewa".
+in D:\Data Skripsi\Riswan\Service\protected\controllers\RumahSewaController.php (71)
+in D:\Data Skripsi\Riswan\Service\index.php (13)
+2013/09/19 19:28:22 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[HY000]: General error: 1364 Field 'created_date' doesn't have a default value. The SQL statement executed was: INSERT INTO `tbl_rumahsewa` (`id_rumahSewa`, `latitude`, `longitude`, `namapemilik`, `alamat`, `no_telp`, `hargasewa`, `fasilitas`, `deskripsi`, `foto`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9).
+in D:\Data Skripsi\Riswan\Service\protected\controllers\RumahSewaController.php (83)
+in D:\Data Skripsi\Riswan\Service\index.php (13)
+2013/09/19 19:28:22 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 1364 Field 'created_date' doesn't have a default value. The SQL statement executed was: INSERT INTO `tbl_rumahsewa` (`id_rumahSewa`, `latitude`, `longitude`, `namapemilik`, `alamat`, `no_telp`, `hargasewa`, `fasilitas`, `deskripsi`, `foto`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9)' in D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\db\CDbCommand.php:358
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\db\ar\CActiveRecord.php(1077): CDbCommand->execute()
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\db\ar\CActiveRecord.php(806): CActiveRecord->insert(NULL)
+#2 D:\Data Skripsi\Riswan\Service\protected\controllers\RumahSewaController.php(83): CActiveRecord->save()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\actions\CInlineAction.php(49): RumahsewaController->actionCreate()
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('create')
+#13 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('rumahsewa/creat...')
+#14 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/rumahsewa/create/
+---

@@ -76,8 +76,8 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 			if (accounts.size() > 0) {
 				for (RumahSewa point : accounts)
 					this.map.addMarker(new MarkerOptions()
-							.position(new LatLng(point.Latitude, point.Longitude)).title(point.OwnersName)
-							.draggable(false).snippet(point.Id + ":" + point.Facilities)
+							.position(new LatLng(point.latitude, point.longitude)).title(point.ownersName)
+							.draggable(false).snippet(point.id + ":" + point.facilities)
 							.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher)));
 				Toast.makeText(this, "Found " + String.valueOf(accounts.size()) + " point(s).",
 						Toast.LENGTH_LONG).show();

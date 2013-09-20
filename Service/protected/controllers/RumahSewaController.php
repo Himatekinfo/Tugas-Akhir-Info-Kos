@@ -9,7 +9,7 @@ class RumahsewaController extends Controller {
     public $layout = '//layouts/column2';
 
     protected function publicActions() {
-        return array("index");
+        return array("index", "create");
     }
 
     /**
@@ -30,11 +30,11 @@ class RumahsewaController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view'),
+                'actions' => array('index', 'view', 'create'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update'),
+                'actions' => array('update'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -67,15 +67,26 @@ class RumahsewaController extends Controller {
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
-        if (isset($_POST['Rumahsewa'])) {
-            $model->attributes = $_POST['Rumahsewa'];
-            if ($model->save())
-                $this->redirect(array('view', 'id' => $model->id_rumahSewa));
+        if (isset($_POST)) {
+            $model->attributes = $_POST;
+
+            $uploads_dir = Yii::app()->basePath . '/..' . '/uploads';
+            $uploads_url = Yii::app()->baseUrl . '/uploads';
+            $file = $_FILES['foto'];
+            $error = $file["error"];
+            if ($error == UPLOAD_ERR_OK) {
+                $tmp_name = $file["tmp_name"];
+                $name = $file["name"];
+                move_uploaded_file($tmp_name, "$uploads_dir/$name");
+                $model->foto = "$uploads_url/$name";
+            }
+            if (!$model->save()) {
+                print_r($model->getErrors());
+                return;
+            }
         }
 
-        $this->render('create', array(
-            'model' => $model,
-        ));
+        print_r($model);
     }
 
     /**

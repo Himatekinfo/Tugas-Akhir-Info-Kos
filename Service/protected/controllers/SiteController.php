@@ -2,6 +2,10 @@
 
 class SiteController extends Controller {
 
+    protected function publicActions() {
+        return array("error");
+    }
+
     /**
      * Declares class-based actions.
      */

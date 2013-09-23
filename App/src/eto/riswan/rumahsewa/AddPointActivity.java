@@ -36,7 +36,7 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 
 	private static final int RESULT_LOAD_IMAGE = 31338;
 
-	public static final String url = "http://172.16.24.222/svc_rumahsewa/index.php/rumahsewa/create/";
+	public static final String url = "http://svcinfosekolah.rimris.us/index.php/rumahSewa/create/";
 
 	public EditText txtOwnersName;
 	public EditText txtAddress;

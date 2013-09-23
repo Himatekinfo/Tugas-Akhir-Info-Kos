@@ -36,7 +36,7 @@ import eto.riswan.rumahsewa.model.RumahSewa;
 import eto.riswan.rumahsewa.model.ServiceResponse;
 
 public class ListPointActivity extends OrmLiteBaseActivity<Database> {
-	public static final String url = "http://172.16.24.222/svc_rumahsewa/index.php/rumahsewa/";
+	public static final String url = "http://svcinfosekolah.rimris.us/index.php/rumahSewa/";
 
 	ServiceResponse response;
 	Boolean keepAlive = true;

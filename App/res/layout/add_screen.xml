@@ -13,7 +13,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:contentDescription="KosPicture" />
+                android:contentDescription="@string/kos_picture" />
 
             <Button
                 android:id="@+id/btnLoadPicture"
@@ -23,14 +23,14 @@
                 android:layout_weight="0"
                 android:onClick="btnLoadPicture_onClick"
                 android:scrollbars="horizontal"
-                android:text="Load Picture" />
+                android:text="@string/load_picture" />
 
             <TextView
                 android:id="@+id/lblOwnersName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
-                android:text="Nama Pemilik" />
+                android:text="@string/nama_pemilik" />
 
             <EditText
                 android:id="@+id/txtOwnersName"
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
                 android:ems="8"
-                android:hint="Nama Pemilik"
+                android:hint=""
                 android:inputType="textPersonName" />
 
             <TextView
@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
-                android:text="Alamat" />
+                android:text="@string/alamat" />
 
             <EditText
                 android:id="@+id/txtAddress"
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
                 android:ems="8"
-                android:hint="Alamat"
+                android:hint=""
                 android:inputType="textPostalAddress" />
 
             <TextView
@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
-                android:text="No Telepon" />
+                android:text="@string/no_telpon" />
 
             <EditText
                 android:id="@+id/txtPhoneNumber"
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
                 android:ems="8"
-                android:hint="No Telepon"
+                android:hint=""
                 android:inputType="phone" />
 
             <TextView
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
-                android:text="Harga Sewa" />
+                android:text="@string/harga_sewa" />
 
             <EditText
                 android:id="@+id/txtRent"
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
                 android:ems="8"
-                android:hint="Harga Sewa"
+                android:hint=""
                 android:inputType="number" />
 
             <TextView
@@ -94,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
-                android:text="Fasilitas" />
+                android:text="@string/fasilitas" />
 
             <EditText
                 android:id="@+id/txtFacilities"
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
                 android:ems="8"
-                android:hint="Fasilitas"
+                android:hint=""
                 android:inputType="text" />
 
             <TextView
@@ -110,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
-                android:text="Deskripsi" />
+                android:text="@string/deskripsi" />
 
             <EditText
                 android:id="@+id/txtDescription"
@@ -118,16 +118,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
                 android:ems="8"
-                android:hint="Deskripsi"
+                android:hint=""
                 android:inputType="textLongMessage|textMultiLine" />
 
             <Button
                 android:id="@+id/btnSavePoint"
-                android:layout_width="wrap_content"
+                android:layout_width="112dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
                 android:onClick="btnSavePoint_onClick"
-                android:text="Save" />
+                android:text="@string/save" />
         </LinearLayout>
     </ScrollView>

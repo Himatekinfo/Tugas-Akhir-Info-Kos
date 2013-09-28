@@ -17,7 +17,11 @@ public class MainActivity extends Activity {
 		Intent x = new Intent(MainActivity.this, SearchActivity.class);
 		this.startActivity(x);
 	}
-
+	
+	public void btnSekilasUika (View v){
+		Intent x = new Intent(MainActivity.this, SekilasUika.class);
+		this.startActivity(x);
+	}
 	public void btnTambahLokasi_onClick(View v) {
 		Intent x = new Intent(MainActivity.this, AddPointActivity.class);
 		this.startActivity(x);

@@ -8,20 +8,20 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pencarian"
+        android:text="@string/pencarian"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cari Berdasarkan" />
+        android:text="@string/cari_berdasarkan" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Harga" />
+        android:text="@string/harga_sewa" />
 
     <ListView
         android:id="@+id/lstPrice"
@@ -33,7 +33,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fasilitas" />
+        android:text="@string/fasilitas" />
     
     <ListView
         android:id="@+id/lstFacilities"

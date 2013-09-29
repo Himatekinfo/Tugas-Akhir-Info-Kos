@@ -38,6 +38,8 @@
         <activity android:name="eto.riswan.rumahsewa.ListPointActivity" />
         <activity android:name="eto.riswan.rumahsewa.SearchActivity" />
         <activity android:name="eto.riswan.rumahsewa.SekilasUika" />
+        <activity android:name="eto.riswan.rumahsewa.AboutActivity"/>
+        <activity android:name="eto.riswan.rumahsewa.HelpActivity" />
         
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"

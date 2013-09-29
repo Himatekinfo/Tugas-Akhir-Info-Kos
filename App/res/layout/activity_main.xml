@@ -57,6 +57,7 @@
         android:drawableLeft="@drawable/icon_about"
         android:drawableTop="@android:color/darker_gray"
         android:text="@string/about"
+        android:onClick="btnAbout_onClick"
         android:textSize="27sp" />
     
     <Button
@@ -66,6 +67,7 @@
         android:drawableLeft="@drawable/icon_help"
         android:drawableTop="@android:color/darker_gray"
         android:text="@string/help"
+        android:onClick="btnHelp_onClick"
         android:textSize="27sp" />
 
 </LinearLayout>

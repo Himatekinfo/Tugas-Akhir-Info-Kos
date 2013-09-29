@@ -26,7 +26,16 @@ public class MainActivity extends Activity {
 		Intent x = new Intent(MainActivity.this, AddPointActivity.class);
 		this.startActivity(x);
 	}
+	
+	public void btnAbout_onClick (View v) {
+		Intent x = new Intent(MainActivity.this, AboutActivity.class);
+		this.startActivity(x);
+	}
 
+	public void btnHelp_onClick(View v){
+		Intent x = new Intent(MainActivity.this, HelpActivity.class);
+		this.startActivity(x);
+	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

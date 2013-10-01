@@ -10,48 +10,53 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
+   
     <ImageButton
         android:id="@+id/btnSekilasUika"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="btnSekilasUika"
         android:src="@drawable/sekilasuika"
-        
-         />
+        android:contentDescription="@string/sekilas_uika"/>
 
     <ImageButton
         android:id="@+id/btnInfoRumahSewa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="btnInfoRumahSewa_OnClick"
-        android:src="@drawable/ceklokasi" />
+        android:src="@drawable/ceklokasi"
+        android:contentDescription="@string/cek_lokasi" />
 
     <ImageButton
         android:id="@+id/btnPencarian"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="btnPencarian_onClick"
-        android:src="@drawable/carilokasi" />
+        android:src="@drawable/carilokasi"
+        android:contentDescription="@string/cari_lokasi" />
 
     <ImageButton
         android:id="@+id/btnAbout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
          android:onClick="btnAbout_onClick"
-        android:src="@drawable/tentanglokasi" />
+        android:src="@drawable/tentanglokasi"
+        android:contentDescription="@string/about" />
 
     <ImageButton
         android:id="@+id/btnHelp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
          android:onClick="btnHelp_onClick"
-        android:src="@drawable/bantuan" />
+        android:src="@drawable/bantuan"
+        android:contentDescription="@string/help" />
 
     <ImageButton
         android:id="@+id/btnTambahLokasi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
          android:onClick="btnTambahLokasi_onClick"
-        android:src="@drawable/tambahlokasi" />
+        android:src="@drawable/tambahlokasi"
+        android:contentDescription="@string/tambah_lokasi" />
 
 </LinearLayout>

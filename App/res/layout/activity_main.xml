@@ -10,64 +10,48 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <Button
+    <ImageButton
         android:id="@+id/btnSekilasUika"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/icon_sekilas"
-        android:drawableTop="@android:color/darker_gray"
         android:onClick="btnSekilasUika"
-        android:text="@string/sekilas_uika"
-        android:textSize="27sp" />
-    
-    <Button
+        android:src="@drawable/sekilasuika"
+        
+         />
+
+    <ImageButton
         android:id="@+id/btnInfoRumahSewa"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/icon_ceklokasi"
-        android:drawableTop="@android:color/darker_gray"
         android:onClick="btnInfoRumahSewa_OnClick"
-        android:text="@string/cek_lokasi"
-        android:textSize="27sp" />
-    
-    <Button
+        android:src="@drawable/ceklokasi" />
+
+    <ImageButton
         android:id="@+id/btnPencarian"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/icon_pencarian"
-        android:drawableTop="@android:color/darker_gray"
         android:onClick="btnPencarian_onClick"
-        android:text="@string/cari_lokasi"
-        android:textSize="27sp" />
-    
-    <Button
-        android:id="@+id/btnTambahLokasi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/icon_tambahlokasi"
-        android:drawableTop="@android:color/darker_gray"
-        android:onClick="btnTambahLokasi_onClick"
-        android:text="@string/tambah_lokasi"
-        android:textSize="27sp" />
-    
-    <Button
+        android:src="@drawable/carilokasi" />
+
+    <ImageButton
         android:id="@+id/btnAbout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/icon_about"
-        android:drawableTop="@android:color/darker_gray"
-        android:text="@string/about"
-        android:onClick="btnAbout_onClick"
-        android:textSize="27sp" />
-    
-    <Button
+         android:onClick="btnAbout_onClick"
+        android:src="@drawable/tentanglokasi" />
+
+    <ImageButton
         android:id="@+id/btnHelp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/icon_help"
-        android:drawableTop="@android:color/darker_gray"
-        android:text="@string/help"
-        android:onClick="btnHelp_onClick"
-        android:textSize="27sp" />
+         android:onClick="btnHelp_onClick"
+        android:src="@drawable/bantuan" />
+
+    <ImageButton
+        android:id="@+id/btnTambahLokasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:onClick="btnTambahLokasi_onClick"
+        android:src="@drawable/tambahlokasi" />
 
 </LinearLayout>

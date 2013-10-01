@@ -2,8 +2,6 @@ package eto.riswan.rumahsewa;
 
 import android.os.Bundle;
 
-
-
 public class AboutActivity extends MainActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -12,4 +10,4 @@ public class AboutActivity extends MainActivity {
 		this.setContentView(R.layout.about_screen);
 	}
 
-		}
+}

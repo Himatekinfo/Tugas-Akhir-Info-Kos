@@ -31,12 +31,13 @@ import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.Where;
 
 import eto.riswan.rumahsewa.helper.Database;
+import eto.riswan.rumahsewa.helper.Global;
 import eto.riswan.rumahsewa.helper.Service;
 import eto.riswan.rumahsewa.model.RumahSewa;
 import eto.riswan.rumahsewa.model.ServiceResponse;
 
 public class ListPointActivity extends OrmLiteBaseActivity<Database> {
-	public static final String url = "http://svcinfosekolah.rimris.us/index.php/rumahSewa/";
+	public static final String url = Global.BaseUrl + "/rumahSewa/";
 
 	ServiceResponse response;
 	Boolean keepAlive = true;

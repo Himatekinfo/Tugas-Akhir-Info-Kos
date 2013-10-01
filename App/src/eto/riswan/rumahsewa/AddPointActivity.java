@@ -28,6 +28,7 @@ import eto.riswan.rumahsewa.core.Parameter;
 import eto.riswan.rumahsewa.core.Parameter.ParameterType;
 import eto.riswan.rumahsewa.helper.Database;
 import eto.riswan.rumahsewa.helper.GeoLocation;
+import eto.riswan.rumahsewa.helper.Global;
 import eto.riswan.rumahsewa.helper.Service;
 import eto.riswan.rumahsewa.model.RumahSewa;
 
@@ -36,7 +37,7 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 
 	private static final int RESULT_LOAD_IMAGE = 31338;
 
-	public static final String url = "http://svcinfosekolah.rimris.us/index.php/rumahSewa/create/";
+	public static final String url = Global.BaseUrl + "/rumahSewa/create/";
 
 	public EditText txtOwnersName;
 	public EditText txtAddress;

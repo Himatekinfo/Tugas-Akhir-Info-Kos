@@ -6,6 +6,8 @@ public class Global {
 	public static final double Latitude = -6.560857;
 	public static final double Longitude = 106.792172;
 
+	public static final String BaseUrl = "http://localhost/svc_infosekolah/index.php";
+
 	public static LatLng getCenterLocation() {
 		return new LatLng(Global.Latitude, Global.Longitude);
 	}

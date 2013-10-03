@@ -17,6 +17,7 @@ import eto.riswan.rumahsewa.model.RumahSewa;
 import eto.riswan.rumahsewa.model.User;
 
 public class Database extends OrmLiteSqliteOpenHelper {
+	private static Database sInstance = null;
 
 	// name of the database file
 	// private static final String DATABASE_NAME = Environment.getExternalStorageDirectory().getAbsolutePath()
@@ -25,21 +26,28 @@ public class Database extends OrmLiteSqliteOpenHelper {
 	// any time you make changes to your database objects, you may have to increase the database version
 	private static final int DATABASE_VERSION = 1;
 
+	public static Database getInstance(Context context) {
+		if (sInstance == null) sInstance = new Database(context);
+		return sInstance;
+	}
+
 	// the DAO object we use to cache access from tables
 	private Dao<RumahSewa, Long> rumahSewaDao = null;
 	private RuntimeExceptionDao<RumahSewa, Long> rumahSewaRuntimeDao = null;
 	private Dao<Rating, Long> ratingDao = null;
 	private RuntimeExceptionDao<Rating, Long> ratingRuntimeDao = null;
 	private Dao<User, Long> userDao = null;
+
 	private RuntimeExceptionDao<User, Long> userRuntimeDao = null;
 
 	public Database(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
-		Log.e("Database", "Opening database " + DATABASE_NAME);
+		Log.v("Database", "Opening database " + DATABASE_NAME);
 	}
 
 	@Override
 	public void close() {
+		Log.v(Database.class.getName(), "onClose");
 		super.close();
 	}
 
@@ -74,30 +82,13 @@ public class Database extends OrmLiteSqliteOpenHelper {
 		return this.userRuntimeDao;
 	}
 
-	private void initializeValuesUserAccount() {
-		// RuntimeExceptionDao<UserAccount, Long> dao = this.getUserAccountRuntime();
-		//
-		// UserAccount admin = new UserAccount(Default.AdminUid, Default.AdminPassword);
-		// admin.Role = UserRole.ADMIN;
-		// dao.createIfNotExists(admin);
-		//
-		// UserAccount dispatcher = new UserAccount(Default.DispatcherUid, Default.DispatcherPassword);
-		// dispatcher.Role = UserRole.DISPATCHER;
-		// dao.createIfNotExists(dispatcher);
-		//
-		// Log.e(Database.class.getName(), "Initialized default values for user accounts.");
-	}
-
 	@Override
 	public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
 		try {
-			Log.i(Database.class.getName(), "onCreate");
+			Log.v(Database.class.getName(), "onCreate");
 
 			TableUtils.createTable(connectionSource, RumahSewa.class);
-			TableUtils.createTable(connectionSource, Rating.class);
 			TableUtils.createTable(connectionSource, User.class);
-
-			this.initializeValuesUserAccount();
 		} catch (SQLException e) {
 			Log.e(Database.class.getName(), "Can't create database", e);
 			throw new RuntimeException(e);
@@ -106,6 +97,7 @@ public class Database extends OrmLiteSqliteOpenHelper {
 
 	@Override
 	public void onOpen(SQLiteDatabase db) {
+		Log.v(Database.class.getName(), "onOpen");
 		super.onOpen(db);
 	}
 

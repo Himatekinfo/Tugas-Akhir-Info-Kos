@@ -99,7 +99,6 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 			@Override
 			public void run() {
 				try {
-					@SuppressWarnings("unused")
 					HttpResponse response = Service.makeRequest(AddPointActivity.url,
 							AddPointActivity.this.lParemeters);
 

@@ -72,8 +72,8 @@ public class RumahSewa {
 	}
 
 	public Long getLocalFromGlobal(Activity a) {
-		String s = this.getGlobalId(a).replace(Secure.getString(a.getContentResolver(), Secure.ANDROID_ID),
-				"");
+		String android_id = Secure.getString(a.getContentResolver(), Secure.ANDROID_ID);
+		String s = this.getGlobalId(a).substring(android_id.length());
 
 		return Long.valueOf(s.substring(0, s.length() - this.createdDate.length()));
 	}

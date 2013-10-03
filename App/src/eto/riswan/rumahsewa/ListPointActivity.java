@@ -39,8 +39,9 @@ import eto.riswan.rumahsewa.model.ServiceResponse;
 public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 	public static final String url = Global.BaseUrl + "/rumahSewa/";
 
-	ServiceResponse response;
 	Boolean keepAlive = true;
+
+	private Thread downloadThread = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,16 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		this.getMenuInflater().inflate(R.menu.maps, menu);
 		return true;
+	}
+
+	@Override
+	protected void onDestroy() {
+		this.keepAlive = false;
+		if (this.downloadThread != null) {
+			this.downloadThread.interrupt();
+			this.downloadThread = null;
+		}
+		super.onDestroy();
 	}
 
 	@Override
@@ -124,7 +135,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 
 		LinearLayout ll = new LinearLayout(this);
 		ll.setOrientation(LinearLayout.VERTICAL);
-		ll.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
+		ll.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 		ll.setGravity(Gravity.CENTER);
 		if (rumahSewas.size() <= 0) Toast.makeText(this, "No data found", Toast.LENGTH_LONG).show();
 		ll.addView(lv);
@@ -140,34 +151,37 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 		Runnable runnable = new Runnable() {
 			@Override
 			public void run() {
+				ServiceResponse response;
+
 				while (ListPointActivity.this.keepAlive) {
-					InputStream source = Service.retrieveStream(ListPointActivity.this.url);
+					InputStream source = Service.retrieveStream(ListPointActivity.url);
 					Gson gson = new Gson();
 					Reader reader = new InputStreamReader(source);
 
-					ListPointActivity.this.response = gson.fromJson(reader, ServiceResponse.class);
+					response = gson.fromJson(reader, ServiceResponse.class);
+					List<RumahSewa> results = response.data;
 
-					ListPointActivity.this.runOnUiThread(new Runnable() {
-						@Override
-						public void run() {
-							List<RumahSewa> results = ListPointActivity.this.response.data;
+					for (RumahSewa result : results)
+						try {
+							Dao<RumahSewa, Long> rumahSewa = Database.getInstance(
+									ListPointActivity.this.getApplicationContext()).getRumahSewa();
 
-							for (RumahSewa result : results)
-								try {
-									Dao<RumahSewa, Long> rumahSewa = ListPointActivity.this.getHelper()
-											.getRumahSewa();
+							result.isSynchronized = true;
+							if (!rumahSewa.idExists(result.getLocalFromGlobal(ListPointActivity.this)))
+								rumahSewa.createIfNotExists(result);
 
-									result.isSynchronized = true;
-									if (!rumahSewa.idExists(result.getLocalFromGlobal(ListPointActivity.this)))
-										rumahSewa.createIfNotExists(result);
-
-								} catch (SQLException e) {
-									e.printStackTrace();
-								}
-
-							ListPointActivity.this.setView();
+						} catch (SQLException e) {
+							e.printStackTrace();
 						}
-					});
+
+					if (ListPointActivity.this.keepAlive)
+						ListPointActivity.this.runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								ListPointActivity.this.setView();
+							}
+						});
+
 					try {
 						Thread.sleep(60000);
 					} catch (InterruptedException e) {
@@ -176,6 +190,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 				}
 			}
 		};
-		new Thread(runnable).start();
+		this.downloadThread = new Thread(runnable);
+		this.downloadThread.start();
 	}
 }

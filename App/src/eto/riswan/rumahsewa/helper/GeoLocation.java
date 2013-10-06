@@ -17,6 +17,8 @@ public class GeoLocation {
 		// Getting Current Location
 		Location location = locationManager.getLastKnownLocation(provider);
 
+		if (location == null) location = new Location("");
+
 		return location;
 	}
 }

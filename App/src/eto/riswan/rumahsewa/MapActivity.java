@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -26,6 +27,8 @@ import eto.riswan.rumahsewa.model.RumahSewa;
 
 public class MapActivity extends OrmLiteBaseFragmentActivity {
 	GoogleMap map;
+
+	private RuntimeExceptionDao<RumahSewa, Long> rumahSewaDao;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,14 +73,13 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 			this.map.animateCamera(CameraUpdateFactory.newCameraPosition(myPosition));
 
 			// Get points
-			RuntimeExceptionDao<RumahSewa, Long> rumahSewaDao;
-			rumahSewaDao = this.getHelper().getRumahSewaRuntime();
-			List<RumahSewa> accounts = rumahSewaDao.queryForAll();
+			this.rumahSewaDao = this.getHelper().getRumahSewaRuntime();
+			List<RumahSewa> accounts = this.rumahSewaDao.queryForAll();
 			if (accounts.size() > 0) {
 				for (RumahSewa point : accounts)
 					this.map.addMarker(new MarkerOptions()
 							.position(new LatLng(point.latitude, point.longitude)).title(point.ownersName)
-							.draggable(false).snippet(point.id + ":" + point.facilities)
+							.draggable(false).snippet(point.id.toString())
 							.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher)));
 				Toast.makeText(this, "Found " + String.valueOf(accounts.size()) + " point(s).",
 						Toast.LENGTH_LONG).show();
@@ -94,9 +96,25 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 
 				@Override
 				public View getInfoWindow(Marker arg0) {
+					RumahSewa r = MapActivity.this.rumahSewaDao.queryForId(Long.parseLong(arg0.getSnippet()));
+
 					View v = MapActivity.this.getLayoutInflater().inflate(R.layout.detail_screen, null);
-					// TextView txtTest = (TextView) v.findViewById(R.idMap.txtDetailMapTitle);
-					// txtTest.setText(arg0.getSnippet());
+
+					TextView txtOwnerName = (TextView) v.findViewById(R.idDetail.txtOwnerName);
+					txtOwnerName.setText(r.ownersName);
+
+					TextView txtRent = (TextView) v.findViewById(R.idDetail.txtRent);
+					txtRent.setText(r.rent.toString());
+
+					TextView txtPhoneNumber = (TextView) v.findViewById(R.idDetail.txtPhoneNumber);
+					txtPhoneNumber.setText(r.phoneNumber);
+
+					TextView txtFacilities = (TextView) v.findViewById(R.idDetail.txtFacilities);
+					txtFacilities.setText(r.facilities);
+
+					TextView txtDescription = (TextView) v.findViewById(R.idDetail.txtDescription);
+					txtDescription.setText(r.description);
+
 					return v;
 				}
 			});

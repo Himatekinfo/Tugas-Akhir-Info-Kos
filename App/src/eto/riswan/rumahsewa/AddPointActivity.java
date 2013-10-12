@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.http.HttpResponse;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -47,6 +48,8 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 	public EditText txtDescription;
 	public Button btnLoadPicture;
 	public String imageLocation;
+
+	ProgressDialog progressBar;
 
 	private List<Parameter> lParemeters;
 
@@ -108,8 +111,16 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 					AddPointActivity.this.runOnUiThread(new Runnable() {
 						@Override
 						public void run() {
+							Toast.makeText(AddPointActivity.this, "Data saved successfully.",
+									Toast.LENGTH_LONG).show();
+
+							Intent x = new Intent(AddPointActivity.this, MapActivity.class);
+							AddPointActivity.this.finish();
+							AddPointActivity.this.startActivity(x);
+
 							Toast.makeText(AddPointActivity.this, "Upload successful.", Toast.LENGTH_LONG)
 									.show();
+							AddPointActivity.this.progressBar.dismiss();
 						}
 					});
 
@@ -120,6 +131,7 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 						@Override
 						public void run() {
 							Toast.makeText(AddPointActivity.this, "Upload failed.", Toast.LENGTH_LONG).show();
+							AddPointActivity.this.progressBar.dismiss();
 						}
 					});
 				}
@@ -127,11 +139,16 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 		};
 		new Thread(runnable).start();
 
-		Toast.makeText(this, "Data saved successfully.", Toast.LENGTH_LONG).show();
+		this.progressBar = new ProgressDialog(this);
+		this.progressBar.setCancelable(false);
+		this.progressBar.setMessage("Saving data...");
+		this.progressBar.show();
 
-		Intent x = new Intent(AddPointActivity.this, MapActivity.class);
-		this.finish();
-		this.startActivity(x);
+		// Toast.makeText(this, "Data saved successfully.", Toast.LENGTH_LONG).show();
+		//
+		// Intent x = new Intent(AddPointActivity.this, MapActivity.class);
+		// this.finish();
+		// this.startActivity(x);
 	}
 
 	@Override

@@ -8,19 +8,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckedTextView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -117,19 +118,40 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 		else
 			rumahSewas = rumahSewaDaoRuntime.queryForAll();
 
-		if (rumahSewas.size() > 0) for (RumahSewa point : rumahSewas)
-			al.add(point.ownersName);
-
+		// if (rumahSewas.size() > 0) for (RumahSewa point : rumahSewas)
+		// al.add(point.ownersName);
+		//
 		Collections.sort(al);
 		lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-		lv.setAdapter(new ArrayAdapter<String>(this.getApplicationContext(), R.layout.radio_list_item, al) {
+		lv.setAdapter(new ArrayAdapter<RumahSewa>(this.getApplicationContext(), R.layout.point_list_item,
+				rumahSewas) {
 			@Override
 			public View getView(int position, View convertView, ViewGroup parent) {
-				CheckedTextView textView = (CheckedTextView) super.getView(position, convertView, parent);
-				textView.setTextColor(Color.BLACK);
-				textView.setCheckMarkDrawable(null);
+				View row = convertView;
 
-				return textView;
+				LayoutInflater inflater = ((Activity) ListPointActivity.this).getLayoutInflater();
+				row = inflater.inflate(R.layout.point_list_item, parent, false);
+
+				RumahSewa r = this.getItem(position);
+
+				TextView txtOwnersName = (TextView) row.findViewById(R.list.txtOwnersName);
+				txtOwnersName.setText(r.ownersName);
+
+				TextView txtPicture = (TextView) row.findViewById(R.list.txtPicture);
+				txtPicture.setText(r.picturePath);
+
+				TextView txtPrice = (TextView) row.findViewById(R.list.txtRentPrice);
+				txtPrice.setText(r.rent.toString());
+
+				TextView txtDistanceFromPosition = (TextView) row
+						.findViewById(R.list.txtDistanceFromPosition);
+				txtDistanceFromPosition.setText(String.valueOf(r
+						.getDistanceFromLocation(ListPointActivity.this)));
+
+				TextView txtDistanceFromCenter = (TextView) row.findViewById(R.list.txtDistanceFromCenter);
+				txtDistanceFromCenter.setText(String.valueOf(r.getDistanceFromCenter(ListPointActivity.this)));
+
+				return row;
 			}
 		});
 

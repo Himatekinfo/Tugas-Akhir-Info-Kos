@@ -3,11 +3,16 @@ package eto.riswan.rumahsewa.model;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.location.Location;
 import android.provider.Settings.Secure;
+import android.util.Log;
 
 import com.google.gson.annotations.SerializedName;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+
+import eto.riswan.rumahsewa.helper.GeoLocation;
+import eto.riswan.rumahsewa.helper.Global;
 
 @DatabaseTable
 public class RumahSewa {
@@ -63,6 +68,34 @@ public class RumahSewa {
 		this.isSynchronized = false;
 		String date = String.valueOf(Calendar.getInstance().getTimeInMillis());
 		this.createdDate = date.substring(date.length() - 7, date.length() - 1);
+	}
+
+	public float getDistanceFromCenter(Activity a) {
+		try {
+			float[] results = new float[1];
+			Location.distanceBetween(Global.Latitude, Global.Longitude, this.latitude, this.longitude,
+					results);
+
+			if (results != null) return results[0];
+		} catch (Exception e) {
+			Log.e("RumahSewa", e.getMessage());
+		}
+
+		return 0;
+	}
+
+	public float getDistanceFromLocation(Activity a) {
+		try {
+			float[] results = new float[1];
+			Location.distanceBetween(GeoLocation.getCurrentLocation(a).getLatitude(), GeoLocation
+					.getCurrentLocation(a).getLongitude(), this.latitude, this.longitude, results);
+
+			if (results != null) return results[0];
+		} catch (Exception e) {
+			Log.e("RumahSewa", e.getMessage());
+		}
+
+		return 0;
 	}
 
 	public String getGlobalId(Activity a) {

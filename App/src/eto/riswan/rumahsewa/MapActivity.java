@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
+import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
@@ -116,6 +117,16 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 					txtDescription.setText(r.description);
 
 					return v;
+				}
+			});
+
+			this.map.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
+
+				@Override
+				public void onInfoWindowClick(Marker arg0) {
+					Intent x = new Intent(MapActivity.this, DetailPointActivity.class);
+					x.putExtra("Id", (Long.parseLong(arg0.getSnippet())));
+					MapActivity.this.startActivity(x);
 				}
 			});
 		}

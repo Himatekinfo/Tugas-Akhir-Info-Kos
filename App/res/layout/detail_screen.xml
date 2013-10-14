@@ -94,6 +94,7 @@
                 android:id="@+idDetail/txtPhoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="txtPhoneNumber_Click"
                 android:text="{No Telepon}" />
         </LinearLayout>
 
@@ -140,6 +141,12 @@
                 android:layout_height="wrap_content"
                 android:text="{Deskripsi}" />
         </LinearLayout>
+        
+        <Button android:text="View Direction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+idDetail/btnViewDirection"
+            android:onClick="btnViewDirection_Click" />
     </LinearLayout>
 
 </ScrollView>

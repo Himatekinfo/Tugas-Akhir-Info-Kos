@@ -17,6 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -133,6 +135,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 				row = inflater.inflate(R.layout.point_list_item, parent, false);
 
 				RumahSewa r = this.getItem(position);
+				row.setTag(r);
 
 				TextView txtOwnersName = (TextView) row.findViewById(R.list.txtOwnersName);
 				txtOwnersName.setText(r.ownersName);
@@ -152,6 +155,14 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 				txtDistanceFromCenter.setText(String.valueOf(r.getDistanceFromCenter(ListPointActivity.this)));
 
 				return row;
+			}
+		});
+		lv.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+				Intent x = new Intent(ListPointActivity.this, DetailPointActivity.class);
+				x.putExtra("Id", ((RumahSewa) arg1.getTag()).id);
+				ListPointActivity.this.startActivity(x);
 			}
 		});
 

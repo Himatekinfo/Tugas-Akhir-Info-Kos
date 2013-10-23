@@ -8,9 +8,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.http.HttpResponse;
+
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -33,6 +38,7 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.Where;
 
+import eto.riswan.rumahsewa.core.Parameter;
 import eto.riswan.rumahsewa.helper.Database;
 import eto.riswan.rumahsewa.helper.Global;
 import eto.riswan.rumahsewa.helper.Service;
@@ -41,16 +47,111 @@ import eto.riswan.rumahsewa.model.ServiceResponse;
 
 public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 	public static final String url = Global.BaseUrl + "/rumahSewa/";
+	public boolean asAdmin = false;
 
 	Boolean keepAlive = true;
 
 	private Thread downloadThread = null;
+	private ArrayList<Parameter> lParemeters;
+	private ProgressDialog progressBar;
+
+	private void delete(final String globalId, final long id) {
+		this.lParemeters = new ArrayList<Parameter>();
+
+		Runnable runnable = new Runnable() {
+			@Override
+			public void run() {
+				try {
+					HttpResponse response = Service.makeRequest(ListPointActivity.url + "/delete/?id="
+							+ globalId, ListPointActivity.this.lParemeters);
+
+					final String s = Service.inputStreamToString(response.getEntity().getContent())
+							.toString();
+
+					ListPointActivity.this.runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							Intent x = new Intent(ListPointActivity.this, ListPointActivity.class);
+							if (ListPointActivity.this.asAdmin) x.putExtra("asAdmin", "1");
+
+							ListPointActivity.this.finish();
+							ListPointActivity.this.startActivity(x);
+
+							if (s.contains(":200")) {
+								try {
+									ListPointActivity.this.getHelper().getRumahSewa().deleteById(id);
+								} catch (SQLException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								Toast.makeText(ListPointActivity.this, "Delete successfully.",
+										Toast.LENGTH_LONG).show();
+							} else
+								Toast.makeText(ListPointActivity.this, "Failed to delete data.",
+										Toast.LENGTH_LONG).show();
+							ListPointActivity.this.progressBar.dismiss();
+						}
+					});
+
+				} catch (Exception e) {
+					e.printStackTrace();
+
+					ListPointActivity.this.runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							Toast.makeText(ListPointActivity.this, "Delete failed.", Toast.LENGTH_LONG)
+									.show();
+							ListPointActivity.this.progressBar.dismiss();
+						}
+					});
+				}
+			}
+		};
+		new Thread(runnable).start();
+
+		this.progressBar = new ProgressDialog(this);
+		this.progressBar.setCancelable(false);
+		this.progressBar.setMessage("Logging in...");
+		this.progressBar.show();
+	}
+
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		RumahSewa r = new RumahSewa();
+		try {
+			r = this.getHelper().getRumahSewa().queryForId((long) item.getItemId());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (item.getTitle() == "Update") {
+			Intent x = new Intent(ListPointActivity.this, AddPointActivity.class);
+			x.putExtra("asUpdate", "1");
+			x.putExtra("Id", r.id);
+
+			ListPointActivity.this.finish();
+			ListPointActivity.this.startActivity(x);
+		} else if (item.getTitle() == "Delete")
+			this.delete(r.getGlobalId(this), r.id);
+		else
+			return false;
+		return true;
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setView();
 		this.startProgress();
+	}
+
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+		RumahSewa r = (RumahSewa) v.getTag();
+		menu.setHeaderTitle("Admin Action");
+		menu.add(0, r.id.intValue(), 0, "Update");
+		menu.add(0, r.id.intValue(), 0, "Delete");
 	}
 
 	@Override
@@ -91,11 +192,12 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 
 		ArrayList<String> al = new ArrayList<String>();
 		Bundle extras = this.getIntent().getExtras();
+		if ((extras != null) && extras.containsKey("asAdmin")) this.asAdmin = true;
 
 		RuntimeExceptionDao<RumahSewa, Long> rumahSewaDaoRuntime = this.getHelper().getRumahSewaRuntime();
 		List<RumahSewa> rumahSewas = new ArrayList<RumahSewa>();
 
-		if (extras != null)
+		if ((extras != null) && extras.containsKey("rent"))
 			try {
 				ArrayList<String> facilities = extras.getStringArrayList("facilities");
 
@@ -153,6 +255,8 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 
 				TextView txtDistanceFromCenter = (TextView) row.findViewById(R.list.txtDistanceFromCenter);
 				txtDistanceFromCenter.setText(String.valueOf(r.getDistanceFromCenter(ListPointActivity.this)));
+
+				if (ListPointActivity.this.asAdmin) ListPointActivity.this.registerForContextMenu(row);
 
 				return row;
 			}
@@ -225,5 +329,9 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 		};
 		this.downloadThread = new Thread(runnable);
 		this.downloadThread.start();
+	}
+
+	public void update(RumahSewa r) {
+
 	}
 }

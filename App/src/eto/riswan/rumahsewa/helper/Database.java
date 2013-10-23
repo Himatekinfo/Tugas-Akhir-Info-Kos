@@ -24,7 +24,7 @@ public class Database extends OrmLiteSqliteOpenHelper {
 	// + File.separator + "rumahsewa.db";
 	private static final String DATABASE_NAME = "rumahsewa.db";
 	// any time you make changes to your database objects, you may have to increase the database version
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 3;
 
 	public static Database getInstance(Context context) {
 		if (sInstance == null) sInstance = new Database(context);

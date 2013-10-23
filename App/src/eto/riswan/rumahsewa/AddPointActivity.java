@@ -1,5 +1,6 @@
 package eto.riswan.rumahsewa;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 
 	private static final int RESULT_LOAD_IMAGE = 31338;
 
-	public static final String url = Global.BaseUrl + "/rumahSewa/create/";
+	public static String url = Global.BaseUrl + "/rumahSewa/create/";
 
 	public EditText txtOwnersName;
 	public EditText txtAddress;
@@ -52,6 +53,11 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 	ProgressDialog progressBar;
 
 	private List<Parameter> lParemeters;
+
+	@SuppressWarnings("unused")
+	private boolean asUpdate = false;
+
+	private RumahSewa rumahSewa;
 
 	protected void bindControls() {
 		this.txtOwnersName = (EditText) this.findViewById(R.id.txtOwnersName);
@@ -93,7 +99,8 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 		this.lParemeters.add(new Parameter("alamat", rumahSewa.address.toString()));
 		this.lParemeters.add(new Parameter("no_telp", rumahSewa.phoneNumber.toString()));
 		this.lParemeters.add(new Parameter("hargasewa", rumahSewa.rent.toString()));
-		this.lParemeters.add(new Parameter("foto", this.imageLocation, ParameterType.BINARY));
+		if (!this.asUpdate)
+			this.lParemeters.add(new Parameter("foto", this.imageLocation, ParameterType.BINARY));
 		this.lParemeters.add(new Parameter("fasilitas", rumahSewa.facilities.toString()));
 		this.lParemeters.add(new Parameter("deskripsi", rumahSewa.description.toString()));
 		this.lParemeters.add(new Parameter("created_date", rumahSewa.createdDate.toString()));
@@ -143,12 +150,6 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 		this.progressBar.setCancelable(false);
 		this.progressBar.setMessage("Saving data...");
 		this.progressBar.show();
-
-		// Toast.makeText(this, "Data saved successfully.", Toast.LENGTH_LONG).show();
-		//
-		// Intent x = new Intent(AddPointActivity.this, MapActivity.class);
-		// this.finish();
-		// this.startActivity(x);
 	}
 
 	@Override
@@ -198,6 +199,27 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 		this.setContentView(R.layout.add_screen);
 
 		this.bindControls();
+
+		if (this.getIntent().hasExtra("asUpdate")) {
+			this.asUpdate = true;
+			try {
+				this.rumahSewa = this.getHelper().getRumahSewa()
+						.queryForId(this.getIntent().getExtras().getLong("Id"));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			AddPointActivity.url = AddPointActivity.url.replace("create", "update");
+			AddPointActivity.url = AddPointActivity.url + "?id=" + this.rumahSewa.getGlobalId(this);
+
+			this.txtOwnersName.setText(this.rumahSewa.ownersName);
+			this.txtAddress.setText(this.rumahSewa.address);
+			this.txtPhoneNumber.setText(this.rumahSewa.phoneNumber);
+			this.txtRent.setText(this.rumahSewa.rent.toString());
+			this.txtFacilities.setText(this.rumahSewa.facilities);
+			this.txtDescription.setText(this.rumahSewa.description);
+			this.imageLocation = this.rumahSewa.picturePath;
+		}
 	}
 
 	@Override

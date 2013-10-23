@@ -18,6 +18,9 @@ public class User {
 	@DatabaseField(width = 50, uniqueCombo = true)
 	public String FullName;
 
+	@DatabaseField(width = 100)
+	public String Password;
+
 	@DatabaseField(width = 500)
 	public String Address;
 

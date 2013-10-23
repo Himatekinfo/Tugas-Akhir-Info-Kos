@@ -41,6 +41,7 @@
         <activity android:name="eto.riswan.rumahsewa.SekilasUika" />
         <activity android:name="eto.riswan.rumahsewa.AboutActivity"/>
         <activity android:name="eto.riswan.rumahsewa.HelpActivity" />
+        <activity android:name="eto.riswan.rumahsewa.LoginActivity" />
         <activity android:name="eto.riswan.rumahsewa.DetailPointActivity" />
         
         <meta-data

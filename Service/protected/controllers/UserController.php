@@ -1,16 +1,12 @@
 <?php
 
-class RumahsewaController extends Controller {
+class UserController extends Controller {
 
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
     public $layout = '//layouts/column2';
-
-    protected function publicActions() {
-        return array("index", "create", "update", "delete");
-    }
 
     /**
      * @return array action filters
@@ -21,6 +17,10 @@ class RumahsewaController extends Controller {
         );
     }
 
+    protected function publicActions() {
+        return array("login", "create");
+    }
+
     /**
      * Specifies the access control rules.
      * This method is used by the 'accessControl' filter.
@@ -29,16 +29,16 @@ class RumahsewaController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'create'),
+                'actions' => array('index', 'view', 'login'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('update'),
-                'users' => array('*'),
+                'actions' => array('create', 'update'),
+                'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
                 'actions' => array('admin', 'delete'),
-                'users' => array('*'),
+                'users' => array('admin'),
             ),
             array('deny', // deny all users
                 'users' => array('*'),
@@ -56,36 +56,35 @@ class RumahsewaController extends Controller {
         ));
     }
 
+    public function actionLogin($user, $pass) {
+        $pass = sha1($pass);
+        $model = User::model()->find("username='$user' AND password='$pass'");
+        if ($model != null) {
+            Helper::returnData(array("data" => $model));
+        } else {
+            Helper::returnData(array(), 550);
+        }
+    }
+
     /**
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
     public function actionCreate() {
-        $model = new Rumahsewa;
+        $model = new User;
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
-        if (isset($_POST)) {
-            $model->attributes = $_POST;
-
-            $uploads_dir = Yii::app()->basePath . '/..' . '/uploads';
-            $uploads_url = Yii::app()->baseUrl . '/uploads';
-            $file = $_FILES['foto'];
-            $error = $file["error"];
-            if ($error == UPLOAD_ERR_OK) {
-                $tmp_name = $file["tmp_name"];
-                $name = $file["name"];
-                move_uploaded_file($tmp_name, "$uploads_dir/$name");
-                $model->foto = "$uploads_url/$name";
-            }
-            if (!$model->save()) {
-                print_r($model->getErrors());
-                return;
-            }
+        if (isset($_POST['User'])) {
+            $model->attributes = $_POST['User'];
+            if ($model->save())
+                $this->redirect(array('view', 'id' => $model->id_user));
         }
 
-        print_r($model);
+        $this->render('create', array(
+            'model' => $model,
+        ));
     }
 
     /**
@@ -99,15 +98,15 @@ class RumahsewaController extends Controller {
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
-        if (isset($_POST['Rumahsewa'])) {
-            $model->attributes = $_POST['Rumahsewa'];
-            if (!$model->save()) {
-                Helper::returnData(array('data' => print_r($model->getErrors(), true)), 500);
-                return;
-            }
+        if (isset($_POST['User'])) {
+            $model->attributes = $_POST['User'];
+            if ($model->save())
+                $this->redirect(array('view', 'id' => $model->id_user));
         }
 
-        Helper::returnData(array("data" => $model));
+        $this->render('update', array(
+            'model' => $model,
+        ));
     }
 
     /**
@@ -118,28 +117,29 @@ class RumahsewaController extends Controller {
     public function actionDelete($id) {
         $this->loadModel($id)->delete();
 
-        Helper::returnData(array());
-//        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-//        if (!isset($_GET['ajax']))
-//            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+        if (!isset($_GET['ajax']))
+            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
     }
 
     /**
      * Lists all models.
      */
     public function actionIndex() {
-        $model = Rumahsewa::model()->findAll();
-        Helper::returnData(array("data" => $model));
+        $dataProvider = new CActiveDataProvider('User');
+        $this->render('index', array(
+            'dataProvider' => $dataProvider,
+        ));
     }
 
     /**
      * Manages all models.
      */
     public function actionAdmin() {
-        $model = new Rumahsewa('search');
+        $model = new User('search');
         $model->unsetAttributes();  // clear any default values
-        if (isset($_GET['Rumahsewa']))
-            $model->attributes = $_GET['Rumahsewa'];
+        if (isset($_GET['User']))
+            $model->attributes = $_GET['User'];
 
         $this->render('admin', array(
             'model' => $model,
@@ -150,11 +150,11 @@ class RumahsewaController extends Controller {
      * Returns the data model based on the primary key given in the GET variable.
      * If the data model is not found, an HTTP exception will be raised.
      * @param integer $id the ID of the model to be loaded
-     * @return Rumahsewa the loaded model
+     * @return User the loaded model
      * @throws CHttpException
      */
     public function loadModel($id) {
-        $model = Rumahsewa::model()->findByPk($id);
+        $model = User::model()->findByPk($id);
         if ($model === null)
             throw new CHttpException(404, 'The requested page does not exist.');
         return $model;
@@ -162,10 +162,10 @@ class RumahsewaController extends Controller {
 
     /**
      * Performs the AJAX validation.
-     * @param Rumahsewa $model the model to be validated
+     * @param User $model the model to be validated
      */
     protected function performAjaxValidation($model) {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'rumahsewa-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'user-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }

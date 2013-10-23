@@ -447,3 +447,279 @@ Stack trace:
 #16 {main}
 REQUEST_URI=/svc_rumahsewa/index.php/rumahsewa/create/
 ---
+2013/10/23 06:49:28 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php:336
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('login')
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('user/login')
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/user/login/?user=test&password=1234
+---
+2013/10/23 07:06:49 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php:336
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('login')
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('user/login')
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/user/login/
+---
+2013/10/23 07:06:59 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php:336
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('login')
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('user/login')
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/user/login/
+---
+2013/10/23 07:09:29 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php:336
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('login')
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('user/login')
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/user/login/
+---
+2013/10/23 07:09:48 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php:336
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('login')
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('user/login')
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/user/login/
+---
+2013/10/23 07:09:52 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php:336
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('login')
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('user/login')
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/user/login/
+---
+2013/10/23 07:10:07 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php:336
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('login')
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('user/login')
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/user/login/
+---
+2013/10/23 07:10:58 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php:336
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('login')
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('user/login')
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/user/login/
+---
+2013/10/23 07:13:20 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php:336
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('login')
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('user/login')
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/user/login/
+---
+2013/10/23 07:13:29 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php:336
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('login')
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('user/login')
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/user/login/
+---
+2013/10/23 07:13:53 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php:336
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('login')
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('user/login')
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/user/login/
+---
+2013/10/23 09:39:18 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php:336
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('login')
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('user/login')
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/user/login/?id=ce64c3c941096e283678828
+---
+2013/10/23 09:47:33 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php:336
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('login')
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('user/login')
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/user/login/?id=ce64c3c941096e283678828
+---
+2013/10/23 09:48:41 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php:336
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('login')
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('user/login')
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/user/login/?id=ce64c3c941096e283678828
+---
+2013/10/23 09:49:44 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php:336
+Stack trace:
+#0 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('login')
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('user/login')
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/user/login/?id=ce64c3c941096e283678828
+---
+2013/10/23 10:17:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in D:\Data Skripsi\Riswan\Service\protected\controllers\RumahSewaController.php:159
+Stack trace:
+#0 D:\Data Skripsi\Riswan\Service\protected\controllers\RumahSewaController.php(119): RumahsewaController->loadModel('ce64c3c941096e2...')
+#1 [internal function]: RumahsewaController->actionDelete('ce64c3c941096e2...')
+#2 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(RumahsewaController), Array)
+#3 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(RumahsewaController), Object(ReflectionMethod), Array)
+#4 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(282): CController->run('delete')
+#13 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\web\CWebApplication.php(141): CWebApplication->runController('rumahSewa/delet...')
+#14 D:\Projects\Shared Resources\yii-1.1.14.f0fee9\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 D:\Data Skripsi\Riswan\Service\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/svc_rumahsewa/index.php/rumahSewa/delete/?id=ce64c3c941096e283678828
+---

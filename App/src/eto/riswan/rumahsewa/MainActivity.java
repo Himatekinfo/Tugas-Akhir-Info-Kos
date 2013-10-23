@@ -4,9 +4,25 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 public class MainActivity extends Activity {
+
+	public void action_settings_click(MenuItem m) {
+		Intent x = new Intent(MainActivity.this, LoginActivity.class);
+		this.startActivity(x);
+	}
+
+	public void btnAbout_onClick(View v) {
+		Intent x = new Intent(MainActivity.this, AboutActivity.class);
+		this.startActivity(x);
+	}
+
+	public void btnHelp_onClick(View v) {
+		Intent x = new Intent(MainActivity.this, HelpActivity.class);
+		this.startActivity(x);
+	}
 
 	public void btnInfoRumahSewa_OnClick(View v) {
 		Intent x = new Intent(MainActivity.this, MapActivity.class);
@@ -17,25 +33,17 @@ public class MainActivity extends Activity {
 		Intent x = new Intent(MainActivity.this, SearchActivity.class);
 		this.startActivity(x);
 	}
-	
-	public void btnSekilasUika (View v){
+
+	public void btnSekilasUika(View v) {
 		Intent x = new Intent(MainActivity.this, SekilasUika.class);
 		this.startActivity(x);
 	}
+
 	public void btnTambahLokasi_onClick(View v) {
 		Intent x = new Intent(MainActivity.this, AddPointActivity.class);
 		this.startActivity(x);
 	}
-	
-	public void btnAbout_onClick (View v) {
-		Intent x = new Intent(MainActivity.this, AboutActivity.class);
-		this.startActivity(x);
-	}
 
-	public void btnHelp_onClick(View v){
-		Intent x = new Intent(MainActivity.this, HelpActivity.class);
-		this.startActivity(x);
-	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

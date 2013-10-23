@@ -11,25 +11,26 @@
         android:src="@drawable/ic_launcher" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/txtUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="User Name"
         android:ems="10" >
-
-        <requestFocus />
     </EditText>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/txtPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Password"
         android:ems="10"
-        android:inputType="numberPassword" />
+        android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="btnLogin_click"
         android:text="Login" />
 
 </LinearLayout>

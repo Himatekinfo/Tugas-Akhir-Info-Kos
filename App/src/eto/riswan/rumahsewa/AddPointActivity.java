@@ -54,7 +54,6 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 
 	private List<Parameter> lParemeters;
 
-	@SuppressWarnings("unused")
 	private boolean asUpdate = false;
 
 	private RumahSewa rumahSewa;

@@ -40,6 +40,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="gravity"
+        android:onClick="copyright_onClick"
+        android:clickable="true"
         android:text="@string/copyright"
          />
 

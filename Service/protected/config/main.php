@@ -37,10 +37,10 @@ return array(
             ),
         ),
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;port=3307;dbname=db_inforumahsewa',
+            'connectionString' => 'mysql:host=localhost;port=3306;dbname=rimrisus_svc_infosekolah',
             'emulatePrepare' => true,
             'username' => 'root',
-            'password' => 'qwe-123',
+            'password' => '',
             'charset' => 'utf8',
         ),
         'errorHandler' => array(

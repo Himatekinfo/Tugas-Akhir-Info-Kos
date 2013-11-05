@@ -53,14 +53,6 @@
         android:onClick="btnHelp_onClick"
         android:src="@drawable/bantuan" />
 
-    <ImageButton
-        android:id="@+id/btnTambahLokasi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/tambah_lokasi"
-        android:onClick="btnTambahLokasi_onClick"
-        android:src="@drawable/tambahlokasi" />
-
 </LinearLayout>
 
 </ScrollView>

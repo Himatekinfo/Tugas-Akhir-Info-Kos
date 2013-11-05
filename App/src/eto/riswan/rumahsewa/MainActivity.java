@@ -39,11 +39,6 @@ public class MainActivity extends Activity {
 		this.startActivity(x);
 	}
 
-	public void btnTambahLokasi_onClick(View v) {
-		Intent x = new Intent(MainActivity.this, AddPointActivity.class);
-		this.startActivity(x);
-	}
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -1,11 +1,13 @@
 package eto.riswan.rumahsewa;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
@@ -13,6 +15,8 @@ import org.apache.http.HttpResponse;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -25,6 +29,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
@@ -158,6 +163,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		this.getMenuInflater().inflate(R.menu.maps, menu);
+		if (this.asAdmin) menu.add("Add");
 		return true;
 	}
 
@@ -173,16 +179,20 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case R.idMap.action_map:
-				Intent intent = new Intent(this, MapActivity.class);
-				this.startActivity(intent);
-				this.keepAlive = false;
-				this.finish();
-				break;
-			default:
-				return super.onOptionsItemSelected(item);
-		}
+		if (item.getTitle() == "Add") {
+			Intent x = new Intent(this, AddPointActivity.class);
+			this.startActivity(x);
+		} else
+			switch (item.getItemId()) {
+				case R.idMap.action_map:
+					Intent intent = new Intent(this, MapActivity.class);
+					this.startActivity(intent);
+					this.keepAlive = false;
+					this.finish();
+					break;
+				default:
+					return super.onOptionsItemSelected(item);
+			}
 
 		return true;
 	}
@@ -190,12 +200,12 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 	private void setView() {
 		ListView lv = new ListView(this);
 
-		ArrayList<String> al = new ArrayList<String>();
 		Bundle extras = this.getIntent().getExtras();
 		if ((extras != null) && extras.containsKey("asAdmin")) this.asAdmin = true;
 
 		RuntimeExceptionDao<RumahSewa, Long> rumahSewaDaoRuntime = this.getHelper().getRumahSewaRuntime();
 		List<RumahSewa> rumahSewas = new ArrayList<RumahSewa>();
+		List<RumahSewa> rumahSewasInRange = new ArrayList<RumahSewa>();
 
 		if ((extras != null) && extras.containsKey("rent"))
 			try {
@@ -222,28 +232,53 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 		else
 			rumahSewas = rumahSewaDaoRuntime.queryForAll();
 
-		// if (rumahSewas.size() > 0) for (RumahSewa point : rumahSewas)
-		// al.add(point.ownersName);
-		//
-		Collections.sort(al);
+		if (rumahSewas.size() > 0) for (RumahSewa point : rumahSewas)
+			// if distance is less than 1000 m, include it in the list
+			if (point.getDistanceFromLocation(this) < 1000) rumahSewasInRange.add(point);
+
 		lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		lv.setAdapter(new ArrayAdapter<RumahSewa>(this.getApplicationContext(), R.layout.point_list_item,
-				rumahSewas) {
+				rumahSewasInRange) {
 			@Override
 			public View getView(int position, View convertView, ViewGroup parent) {
-				View row = convertView;
-
 				LayoutInflater inflater = ((Activity) ListPointActivity.this).getLayoutInflater();
-				row = inflater.inflate(R.layout.point_list_item, parent, false);
+				final View row = inflater.inflate(R.layout.point_list_item, parent, false);
 
-				RumahSewa r = this.getItem(position);
+				final RumahSewa r = this.getItem(position);
 				row.setTag(r);
 
 				TextView txtOwnersName = (TextView) row.findViewById(R.list.txtOwnersName);
 				txtOwnersName.setText(r.ownersName);
 
-				TextView txtPicture = (TextView) row.findViewById(R.list.txtPicture);
-				txtPicture.setText(r.picturePath);
+				Thread thread = new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						try {
+							URL url;
+							url = new URL(Global.BaseUrl + r.picturePath);
+							final Bitmap bmp = BitmapFactory.decodeStream(url.openConnection()
+									.getInputStream());
+							ListPointActivity.this.runOnUiThread(new Runnable() {
+
+								@Override
+								public void run() {
+									ImageView imageLocation = (ImageView) row
+											.findViewById(R.list.imagePicture);
+									imageLocation.setImageBitmap(bmp);
+								}
+							});
+						} catch (MalformedURLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				});
+
+				thread.start();
 
 				TextView txtPrice = (TextView) row.findViewById(R.list.txtRentPrice);
 				txtPrice.setText(r.rent.toString());

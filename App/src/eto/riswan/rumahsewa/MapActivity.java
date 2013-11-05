@@ -75,15 +75,19 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 
 			// Get points
 			this.rumahSewaDao = this.getHelper().getRumahSewaRuntime();
-			List<RumahSewa> accounts = this.rumahSewaDao.queryForAll();
-			if (accounts.size() > 0) {
-				for (RumahSewa point : accounts)
-					this.map.addMarker(new MarkerOptions()
-							.position(new LatLng(point.latitude, point.longitude)).title(point.ownersName)
-							.draggable(false).snippet(point.id.toString())
-							.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher)));
-				Toast.makeText(this, "Found " + String.valueOf(accounts.size()) + " point(s).",
-						Toast.LENGTH_LONG).show();
+			List<RumahSewa> rumahSewas = this.rumahSewaDao.queryForAll();
+			if (rumahSewas.size() > 0) {
+				int count = 0;
+				for (RumahSewa point : rumahSewas)
+					if (point.getDistanceFromLocation(this) < 1000) {
+						this.map.addMarker(new MarkerOptions()
+								.position(new LatLng(point.latitude, point.longitude))
+								.title(point.ownersName).draggable(false).snippet(point.id.toString())
+								.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher)));
+						count++;
+					}
+				Toast.makeText(this, "Found " + String.valueOf(count) + " point(s).", Toast.LENGTH_LONG)
+						.show();
 			} else
 				Toast.makeText(this, "No points found.", Toast.LENGTH_LONG).show();
 

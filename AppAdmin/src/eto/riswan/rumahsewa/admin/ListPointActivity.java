@@ -16,8 +16,8 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Gravity;
@@ -116,7 +116,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 
 		this.progressBar = new ProgressDialog(this);
 		this.progressBar.setCancelable(false);
-		this.progressBar.setMessage("Logging in...");
+		this.progressBar.setMessage("Deleting data...");
 		this.progressBar.show();
 	}
 
@@ -234,15 +234,16 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 
 		if (rumahSewas.size() > 0) for (RumahSewa point : rumahSewas)
 			// if distance is less than 1000 m, include it in the list
-			if (point.getDistanceFromLocation(this) < 1000) rumahSewasInRange.add(point);
+			// if (point.getDistanceFromLocation(this) < 1000)
+			rumahSewasInRange.add(point);
 
 		lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-		lv.setAdapter(new ArrayAdapter<RumahSewa>(this.getApplicationContext(), R.layout.point_list_item,
+		lv.setAdapter(new ArrayAdapter<RumahSewa>(this.getApplicationContext(), R.layout.item_list_rumahsewa,
 				rumahSewasInRange) {
 			@Override
 			public View getView(int position, View convertView, ViewGroup parent) {
 				LayoutInflater inflater = ((Activity) ListPointActivity.this).getLayoutInflater();
-				final View row = inflater.inflate(R.layout.point_list_item, parent, false);
+				final View row = inflater.inflate(R.layout.item_list_rumahsewa, parent, false);
 
 				final RumahSewa r = this.getItem(position);
 				row.setTag(r);
@@ -256,9 +257,8 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 					public void run() {
 						try {
 							URL url;
-							url = new URL(Global.BaseUrl + r.picturePath);
-							final Bitmap bmp = BitmapFactory.decodeStream(url.openConnection()
-									.getInputStream());
+							url = new URL(Global.BaseUrl.replace("index.php", "") + r.picturePath);
+							final Bitmap bmp = Service.loadBitmapFromUri(ListPointActivity.this, url);
 							ListPointActivity.this.runOnUiThread(new Runnable() {
 
 								@Override
@@ -326,6 +326,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 				ServiceResponse response;
 
 				while (ListPointActivity.this.keepAlive) {
+					Log.i("Service", "Starting loop...");
 					InputStream source = Service.retrieveStream(ListPointActivity.url);
 					Gson gson = new Gson();
 					Reader reader = new InputStreamReader(source);
@@ -355,6 +356,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 						});
 
 					try {
+						Log.i("Service", "Resting...");
 						Thread.sleep(60000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
@@ -363,6 +365,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 			}
 		};
 		this.downloadThread = new Thread(runnable);
+		Log.i("Service", "Getting data...");
 		this.downloadThread.start();
 	}
 

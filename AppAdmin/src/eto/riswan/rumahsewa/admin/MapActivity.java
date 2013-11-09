@@ -79,13 +79,13 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 			if (rumahSewas.size() > 0) {
 				int count = 0;
 				for (RumahSewa point : rumahSewas)
-					if (point.getDistanceFromLocation(this) < 1000) {
-						this.map.addMarker(new MarkerOptions()
-								.position(new LatLng(point.latitude, point.longitude))
-								.title(point.ownersName).draggable(false).snippet(point.id.toString())
-								.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher)));
-						count++;
-					}
+					// if (point.getDistanceFromLocation(this) < 1000) {
+					this.map.addMarker(new MarkerOptions()
+							.position(new LatLng(point.latitude, point.longitude)).title(point.ownersName)
+							.draggable(false).snippet(point.id.toString())
+							.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher)));
+				// count++;
+				// }
 				Toast.makeText(this, "Found " + String.valueOf(count) + " point(s).", Toast.LENGTH_LONG)
 						.show();
 			} else

@@ -30,6 +30,7 @@ Universitas Ibn Chaldun Bogor (UIC Bogor) didirikan pada tanggal 23 April 1961 d
 </string>
 	<string name="tentangAplikasi">Aplikasi ini membantu memberikan informasi lokasi rumah sewa disekitar UIKA Bogor. Dibuat sebagai syarat mendapatkan gelar sarjana</string>
 	<string name="aboutFoni">Masagus Setiawan S.Kom., M.Kom. sebagai pembimbing satu lahir di Kudus pada 22 Juni 1997. Menempuh pendidikan S1 di Universitas Pakuan Bogor pada program studi ilmu komputer dan S2 di Magister ilmu komputer di Universitas Budi Luhur pada program kekhususan Software Enginering. </string>
-	<string name="bantuan">Ada hanya perlu memilih menu Cek Lokasi untuk mengetahui lokasi-lokasi rumah sewa yang berada disekitar anda dalam bentuk peta dan anda bisa mencari lokasi yang anda inginkan berdasarkan harga sewa rumah sewa dan fasilitas yang ada dirumah sewa tersebut. Terimakasih</string>
+	<string name="bantuan">Ada hanya perlu memilih menu Cek Lokasi untuk mengetahui lokasi-lokasi rumah sewa yang berada disekitar anda dalam bentuk peta dan anda bisa melakukan panggiln telpon jika no hp tersedia, anda juga bisa menggunakan fitur rute untuk mengetahui arah menuju lokasi rumah sewa yang anda tuju. Terimakasih</string>
 	<string name="copyright">Copyright 2013 Riswan</string>
+	<string name="aboutNovita">Novita Br Ginting S.Kom., M.Kom. Sebagai pembimbing pendamping Lulusan D3 STIKOM Bina Niaga Bogor,  S1 STMIK RSH Indonesia, S2 Budi Luhur dengan jurusan Management Information System.</string>
 </resources>

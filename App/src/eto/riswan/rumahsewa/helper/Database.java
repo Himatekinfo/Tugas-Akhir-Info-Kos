@@ -12,7 +12,7 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
-import eto.riswan.rumahsewa.model.Rating;
+//import eto.riswan.rumahsewa.model.Rating;
 import eto.riswan.rumahsewa.model.RumahSewa;
 import eto.riswan.rumahsewa.model.User;
 
@@ -34,8 +34,8 @@ public class Database extends OrmLiteSqliteOpenHelper {
 	// the DAO object we use to cache access from tables
 	private Dao<RumahSewa, Long> rumahSewaDao = null;
 	private RuntimeExceptionDao<RumahSewa, Long> rumahSewaRuntimeDao = null;
-	private Dao<Rating, Long> ratingDao = null;
-	private RuntimeExceptionDao<Rating, Long> ratingRuntimeDao = null;
+//	private Dao<Rating, Long> ratingDao = null;
+//	private RuntimeExceptionDao<Rating, Long> ratingRuntimeDao = null;
 	private Dao<User, Long> userDao = null;
 
 	private RuntimeExceptionDao<User, Long> userRuntimeDao = null;
@@ -51,15 +51,15 @@ public class Database extends OrmLiteSqliteOpenHelper {
 		super.close();
 	}
 
-	public Dao<Rating, Long> getRating() throws SQLException {
-		if (this.ratingDao == null) this.ratingDao = this.getDao(Rating.class);
-		return this.ratingDao;
-	}
-
-	public RuntimeExceptionDao<Rating, Long> getRatingRuntime() {
-		if (this.ratingRuntimeDao == null) this.ratingRuntimeDao = this.getRuntimeExceptionDao(Rating.class);
-		return this.ratingRuntimeDao;
-	}
+//	public Dao<Rating, Long> getRating() throws SQLException {
+//		if (this.ratingDao == null) this.ratingDao = this.getDao(Rating.class);
+//		return this.ratingDao;
+//	}
+//
+//	public RuntimeExceptionDao<Rating, Long> getRatingRuntime() {
+//		if (this.ratingRuntimeDao == null) this.ratingRuntimeDao = this.getRuntimeExceptionDao(Rating.class);
+//		return this.ratingRuntimeDao;
+//	}
 
 	public Dao<RumahSewa, Long> getRumahSewa() throws SQLException {
 		if (this.rumahSewaDao == null) this.rumahSewaDao = this.getDao(RumahSewa.class);
@@ -106,7 +106,7 @@ public class Database extends OrmLiteSqliteOpenHelper {
 		try {
 			Log.i(Database.class.getName(), "onUpgrade");
 			TableUtils.dropTable(connectionSource, RumahSewa.class, true);
-			TableUtils.dropTable(connectionSource, Rating.class, true);
+//			TableUtils.dropTable(connectionSource, Rating.class, true);
 			TableUtils.dropTable(connectionSource, User.class, true);
 			// after we drop the old databases, we create the new ones
 			this.onCreate(db, connectionSource);

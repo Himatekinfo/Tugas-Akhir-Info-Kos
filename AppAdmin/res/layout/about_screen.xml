@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-<LinearLayout 
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical" >
@@ -17,8 +18,8 @@
     
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="109dp"
         android:contentDescription="@string/aboutFoni"
         android:src="@drawable/pakfoni" />
 
@@ -31,19 +32,25 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_width="89dp"
+        android:layout_height="70dp"
         android:src="@drawable/bunovita" />
+<TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:textAlignment="gravity"
+       android:contentDescription="@string/aboutFoni"
+       android:text="@string/aboutNovita" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="gravity"
-        android:onClick="copyright_onClick"
+        android:layout_gravity="center"
         android:clickable="true"
+        android:onClick="copyright_onClick"
         android:text="@string/copyright"
-         />
+        android:textAlignment="center" />
 
 </LinearLayout>
 </ScrollView>

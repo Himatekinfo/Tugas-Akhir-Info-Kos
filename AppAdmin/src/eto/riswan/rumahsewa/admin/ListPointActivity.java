@@ -67,8 +67,11 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 			@Override
 			public void run() {
 				try {
-					HttpResponse response = Service.makeRequest(ListPointActivity.url + "/delete/?id="
-							+ globalId, ListPointActivity.this.lParemeters);
+					String url = ListPointActivity.url + "delete/?id=" + globalId;
+
+					Log.i("Deleting data...", "Url:" + url);
+
+					HttpResponse response = Service.makeRequest(url, ListPointActivity.this.lParemeters);
 
 					final String s = Service.inputStreamToString(response.getEntity().getContent())
 							.toString();
@@ -259,6 +262,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 							URL url;
 							url = new URL(Global.BaseUrl.replace("index.php", "") + r.picturePath);
 							final Bitmap bmp = Service.loadBitmapFromUri(ListPointActivity.this, url);
+							Log.i("Loading image...", url.toString());
 							ListPointActivity.this.runOnUiThread(new Runnable() {
 
 								@Override
@@ -280,16 +284,28 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 
 				thread.start();
 
-				TextView txtPrice = (TextView) row.findViewById(R.list.txtRentPrice);
-				txtPrice.setText(r.rent.toString());
+				TextView txtAddress = (TextView) row.findViewById(R.list.txtAddress);
+				txtAddress.setText(r.address == null ? "" : r.address);
 
-				TextView txtDistanceFromPosition = (TextView) row
-						.findViewById(R.list.txtDistanceFromPosition);
-				txtDistanceFromPosition.setText(String.valueOf(r
-						.getDistanceFromLocation(ListPointActivity.this)));
+				TextView txtPhone = (TextView) row.findViewById(R.list.txtPhone);
+				txtPhone.setText(r.phoneNumber);
 
-				TextView txtDistanceFromCenter = (TextView) row.findViewById(R.list.txtDistanceFromCenter);
-				txtDistanceFromCenter.setText(String.valueOf(r.getDistanceFromCenter(ListPointActivity.this)));
+				TextView txtSewa = (TextView) row.findViewById(R.list.txtSewa);
+				txtSewa.setText(r.rent.toString());
+
+				TextView txtDistance = (TextView) row.findViewById(R.list.txtDistanceFromLocation);
+				txtDistance.setText(String.valueOf(r.getDistanceFromLocation(ListPointActivity.this)));
+
+				// TextView txtPrice = (TextView) row.findViewById(R.list.txtRentPrice);
+				// txtPrice.setText(r.rent.toString());
+
+				// TextView txtDistanceFromPosition = (TextView) row
+				// .findViewById(R.list.txtDistanceFromPosition);
+				// txtDistanceFromPosition.setText(String.valueOf(r
+				// .getDistanceFromLocation(ListPointActivity.this)));
+				//
+				// TextView txtDistanceFromCenter = (TextView) row.findViewById(R.list.txtDistanceFromCenter);
+				// txtDistanceFromCenter.setText(String.valueOf(r.getDistanceFromCenter(ListPointActivity.this)));
 
 				if (ListPointActivity.this.asAdmin) ListPointActivity.this.registerForContextMenu(row);
 
@@ -357,7 +373,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 
 					try {
 						Log.i("Service", "Resting...");
-						Thread.sleep(60000);
+						Thread.sleep(6000000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}

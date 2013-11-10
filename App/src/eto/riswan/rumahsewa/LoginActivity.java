@@ -47,14 +47,15 @@ public class LoginActivity extends OrmLiteBaseActivity<Database> {
 							x.putExtra("asAdmin", "1");
 
 							LoginActivity.this.finish();
-							LoginActivity.this.startActivity(x);
 
-							if (s.contains(":200,"))
+							if (s.contains(":200,")) {
 								Toast.makeText(LoginActivity.this, "Login successful.", Toast.LENGTH_LONG)
 										.show();
-							else
-								Toast.makeText(LoginActivity.this, "Invalid username or password.",
-										Toast.LENGTH_LONG).show();
+								LoginActivity.this.startActivity(x);
+							} else
+								Toast.makeText(LoginActivity.this,
+										"Invalid username or password. Detail: " + s, Toast.LENGTH_LONG)
+										.show();
 							LoginActivity.this.progressBar.dismiss();
 						}
 					});

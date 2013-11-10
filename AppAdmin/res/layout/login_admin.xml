@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="User Name"
+        android:text="bluespy"
         android:ems="10" >
     </EditText>
 
@@ -23,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
+        android:text="qwe-123"
         android:ems="10"
         android:inputType="textPassword" />
 

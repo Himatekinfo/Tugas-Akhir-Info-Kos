@@ -4,17 +4,23 @@
     android:layout_height="wrap_content"
     android:background="#ffffffff"
     android:orientation="vertical" >
-
+    
+   
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
+	<ImageView
+	    android:layout_width="fill_parent"
+	    android:layout_height="126dp" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
-
+            
+		
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,12 +81,6 @@
                 android:id="@+idDetail/txtLocation"
                 android:text="Image not found." />
         </LinearLayout>
-        
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:id="@+idDetail/imageLocation" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -153,12 +153,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
-            <Button android:text="View Direction"
+            <Button android:text="Rute"
                 android:layout_weight="1"
 	            android:layout_width="0dp"
 	            android:layout_height="wrap_content"
 	            android:id="@+idDetail/btnViewDirection" />
-            <Button android:text="Call"
+            <Button android:text="Panggil"
 	            android:layout_weight="1"
 	            android:layout_width="0dp"
 	            android:layout_height="wrap_content"

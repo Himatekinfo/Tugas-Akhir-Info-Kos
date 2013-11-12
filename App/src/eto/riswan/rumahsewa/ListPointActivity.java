@@ -16,7 +16,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -59,6 +58,8 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 	private Thread downloadThread = null;
 	private ArrayList<Parameter> lParemeters;
 	private ProgressDialog progressBar;
+
+	private List<Thread> bgActivities;
 
 	private void delete(final String globalId, final long id) {
 		this.lParemeters = new ArrayList<Parameter>();
@@ -146,6 +147,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.bgActivities = new ArrayList<Thread>();
 		this.setView();
 		this.startProgress();
 	}
@@ -174,6 +176,9 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 			this.downloadThread.interrupt();
 			this.downloadThread = null;
 		}
+
+		if (this.bgActivities.size() > 0) for (Thread t : this.bgActivities)
+			if (t.isAlive()) t.interrupt();
 		super.onDestroy();
 	}
 
@@ -182,6 +187,8 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 		if (item.getTitle() == "Add") {
 			Intent x = new Intent(this, AddPointActivity.class);
 			this.startActivity(x);
+			this.keepAlive = false;
+			this.finish();
 		} else
 			switch (item.getItemId()) {
 				case R.idMap.action_map:
@@ -256,9 +263,8 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 					public void run() {
 						try {
 							URL url;
-							url = new URL(Global.BaseUrl + r.picturePath);
-							final Bitmap bmp = BitmapFactory.decodeStream(url.openConnection()
-									.getInputStream());
+							url = new URL(Global.BaseUrl.replace("/index.php", "") + r.picturePath);
+							final Bitmap bmp = Service.loadBitmapFromUri(ListPointActivity.this, url);
 							ListPointActivity.this.runOnUiThread(new Runnable() {
 
 								@Override
@@ -279,6 +285,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 				});
 
 				thread.start();
+				ListPointActivity.this.bgActivities.add(thread);
 
 				TextView txtPrice = (TextView) row.findViewById(R.list.txtRentPrice);
 				txtPrice.setText(r.rent.toString());
@@ -302,6 +309,8 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 				Intent x = new Intent(ListPointActivity.this, DetailPointActivity.class);
 				x.putExtra("Id", ((RumahSewa) arg1.getTag()).id);
 				ListPointActivity.this.startActivity(x);
+				ListPointActivity.this.keepAlive = false;
+				ListPointActivity.this.finish();
 			}
 		});
 
@@ -356,6 +365,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 
 					try {
 						Thread.sleep(60000);
+						ListPointActivity.this.keepAlive = false;
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}

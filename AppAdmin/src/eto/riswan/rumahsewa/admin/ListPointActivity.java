@@ -60,6 +60,8 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 	private ArrayList<Parameter> lParemeters;
 	private ProgressDialog progressBar;
 
+	private List<Thread> bgActivities;
+
 	private void delete(final String globalId, final long id) {
 		this.lParemeters = new ArrayList<Parameter>();
 
@@ -149,6 +151,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.bgActivities = new ArrayList<Thread>();
 		this.setView();
 		this.startProgress();
 	}
@@ -177,6 +180,9 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 			this.downloadThread.interrupt();
 			this.downloadThread = null;
 		}
+
+		for (Thread t : this.bgActivities)
+			if (t.isAlive()) t.interrupt();
 		super.onDestroy();
 	}
 
@@ -283,6 +289,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 				});
 
 				thread.start();
+				ListPointActivity.this.bgActivities.add(thread);
 
 				TextView txtAddress = (TextView) row.findViewById(R.list.txtAddress);
 				txtAddress.setText(r.address == null ? "" : r.address);
@@ -374,6 +381,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 					try {
 						Log.i("Service", "Resting...");
 						Thread.sleep(6000000);
+						ListPointActivity.this.keepAlive = false;
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}

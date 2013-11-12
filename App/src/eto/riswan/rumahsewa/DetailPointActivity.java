@@ -6,7 +6,6 @@ import java.net.URL;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +20,7 @@ import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 
 import eto.riswan.rumahsewa.helper.Database;
 import eto.riswan.rumahsewa.helper.Global;
+import eto.riswan.rumahsewa.helper.Service;
 import eto.riswan.rumahsewa.model.RumahSewa;
 
 public class DetailPointActivity extends OrmLiteBaseActivity<Database> {
@@ -78,16 +78,13 @@ public class DetailPointActivity extends OrmLiteBaseActivity<Database> {
 				public void run() {
 					try {
 						URL url;
-						url = new URL(Global.BaseUrl + DetailPointActivity.this.r.picturePath);
-						final Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+						url = new URL(Global.BaseUrl.replace("/index.php", "")
+								+ DetailPointActivity.this.r.picturePath);
+						final Bitmap bmp = Service.loadBitmapFromUri(DetailPointActivity.this, url);
 						DetailPointActivity.this.runOnUiThread(new Runnable() {
 
 							@Override
 							public void run() {
-								TextView txtLocation = (TextView) DetailPointActivity.this.v
-										.findViewById(R.idDetail.txtLocation);
-								txtLocation.setText("");
-
 								ImageView imageLocation = (ImageView) DetailPointActivity.this.v
 										.findViewById(R.idDetail.imageLocation);
 								imageLocation.setImageBitmap(bmp);

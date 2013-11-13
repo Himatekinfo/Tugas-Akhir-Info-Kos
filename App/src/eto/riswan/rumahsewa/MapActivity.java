@@ -23,6 +23,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 import eto.riswan.rumahsewa.core.OrmLiteBaseFragmentActivity;
+import eto.riswan.rumahsewa.helper.GeoLocation;
 import eto.riswan.rumahsewa.helper.Global;
 import eto.riswan.rumahsewa.model.RumahSewa;
 
@@ -76,6 +77,13 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 			// Get points
 			this.rumahSewaDao = this.getHelper().getRumahSewaRuntime();
 			List<RumahSewa> rumahSewas = this.rumahSewaDao.queryForAll();
+
+			this.map.addMarker(new MarkerOptions()
+					.position(
+							new LatLng(GeoLocation.getCurrentLocation(this).getLatitude(), GeoLocation
+									.getCurrentLocation(this).getLongitude())).title("Current Location")
+					.draggable(false));
+
 			if (rumahSewas.size() > 0) {
 				int count = 0;
 				for (RumahSewa point : rumahSewas)

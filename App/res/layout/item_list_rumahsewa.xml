@@ -15,44 +15,33 @@
         android:padding="3dip" >
 
         <ImageView
-            android:id="@+id/img_rumahsewa"
+            android:id="@+list/imagePicture"
             android:layout_width="50dip"
             android:layout_height="50dip"
-            android:contentDescription="@string/app_name"
             />
                 
         </LinearLayout>
         
-    <TextView android:id="@+id/nm_pemilik"
+    <TextView android:id="@+list/txtOwnersName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/thumbinail"
-        android:layout_toRightOf="@+id/thumbinail"
+        android:layout_alignTop="@id/thumbinail"
+        android:layout_toRightOf="@id/thumbinail"
         android:text="Nama Pemilik"
         android:textColor="#040404"
         android:textSize="12dip"
         android:textStyle="bold"
         android:typeface="sans"/>
         
-    <TextView android:id="@+id/almt_rumahsewa"
+    <TextView android:id="@+list/txtAddress"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/nm_pemilik"
+        android:layout_below="@+list/txtOwnersName"
         android:layout_marginTop="1dip"
-        android:layout_toRightOf="@+id/thumbinail"
+        android:layout_toRightOf="@id/thumbinail"
         android:text="Alamat rumahsewa"
         android:textColor="#000000"
         android:textSize="12dip"/>
-
-    <ImageView 
-        android:id="@+id/icon_telepon"
-         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/almt_rumahsewa"
-        android:layout_marginTop="1dip"
-        android:layout_toRightOf="@+id/thumbinail"
-       
-        />
     
     <TextView 
         android:id="@+id/lnk_image_rumahsewa"
@@ -63,18 +52,36 @@
     <TextView android:id="@+id/id_rumahsewa"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        
         android:visibility="gone"/>
 
     <TextView
-        android:id="@+id/telp_rumahsewa"
+        android:id="@+list/txtPhone"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/icon_telepon"
-        android:layout_toRightOf="@+id/thumbinail"
+        android:layout_below="@list/txtAddress"
+        android:layout_toRightOf="@id/thumbinail"
         android:text="No. Telp rumah sewa"
         android:textColor="#ff0000"
         android:textSize="11dip"
         android:textStyle="bold" />
+    
+    <TextView
+        android:id="@+list/txtSewa"
+        android:text="Harga Sewa"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/thumbinail"
+        android:layout_below="@list/txtPhone"
+        />
+    
+    <TextView
+        android:id="@+list/txtDistanceFromLocation"
+        android:text="Harga Sewa"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/thumbinail"
+        android:layout_below="@list/txtSewa"
+        />
 
 </RelativeLayout>

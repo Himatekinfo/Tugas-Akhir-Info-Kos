@@ -17,6 +17,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Gravity;
@@ -244,12 +245,12 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 			if (point.getDistanceFromLocation(this) < 1000) rumahSewasInRange.add(point);
 
 		lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-		lv.setAdapter(new ArrayAdapter<RumahSewa>(this.getApplicationContext(), R.layout.point_list_item,
+		lv.setAdapter(new ArrayAdapter<RumahSewa>(this.getApplicationContext(), R.layout.item_list_rumahsewa,
 				rumahSewasInRange) {
 			@Override
 			public View getView(int position, View convertView, ViewGroup parent) {
 				LayoutInflater inflater = ((Activity) ListPointActivity.this).getLayoutInflater();
-				final View row = inflater.inflate(R.layout.point_list_item, parent, false);
+				final View row = inflater.inflate(R.layout.item_list_rumahsewa, parent, false);
 
 				final RumahSewa r = this.getItem(position);
 				row.setTag(r);
@@ -263,8 +264,9 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 					public void run() {
 						try {
 							URL url;
-							url = new URL(Global.BaseUrl.replace("/index.php", "") + r.picturePath);
+							url = new URL(Global.BaseUrl.replace("index.php", "") + r.picturePath);
 							final Bitmap bmp = Service.loadBitmapFromUri(ListPointActivity.this, url);
+							Log.i("Loading image...", url.toString());
 							ListPointActivity.this.runOnUiThread(new Runnable() {
 
 								@Override
@@ -287,16 +289,28 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 				thread.start();
 				ListPointActivity.this.bgActivities.add(thread);
 
-				TextView txtPrice = (TextView) row.findViewById(R.list.txtRentPrice);
-				txtPrice.setText(r.rent.toString());
+				TextView txtAddress = (TextView) row.findViewById(R.list.txtAddress);
+				txtAddress.setText(r.address == null ? "" : r.address);
 
-				TextView txtDistanceFromPosition = (TextView) row
-						.findViewById(R.list.txtDistanceFromPosition);
-				txtDistanceFromPosition.setText(String.valueOf(r
-						.getDistanceFromLocation(ListPointActivity.this)));
+				TextView txtPhone = (TextView) row.findViewById(R.list.txtPhone);
+				txtPhone.setText(r.phoneNumber);
 
-				TextView txtDistanceFromCenter = (TextView) row.findViewById(R.list.txtDistanceFromCenter);
-				txtDistanceFromCenter.setText(String.valueOf(r.getDistanceFromCenter(ListPointActivity.this)));
+				TextView txtSewa = (TextView) row.findViewById(R.list.txtSewa);
+				txtSewa.setText(r.rent.toString());
+
+				TextView txtDistance = (TextView) row.findViewById(R.list.txtDistanceFromLocation);
+				txtDistance.setText(String.valueOf(r.getDistanceFromLocation(ListPointActivity.this)));
+
+				// TextView txtPrice = (TextView) row.findViewById(R.list.txtRentPrice);
+				// txtPrice.setText(r.rent.toString());
+
+				// TextView txtDistanceFromPosition = (TextView) row
+				// .findViewById(R.list.txtDistanceFromPosition);
+				// txtDistanceFromPosition.setText(String.valueOf(r
+				// .getDistanceFromLocation(ListPointActivity.this)));
+				//
+				// TextView txtDistanceFromCenter = (TextView) row.findViewById(R.list.txtDistanceFromCenter);
+				// txtDistanceFromCenter.setText(String.valueOf(r.getDistanceFromCenter(ListPointActivity.this)));
 
 				if (ListPointActivity.this.asAdmin) ListPointActivity.this.registerForContextMenu(row);
 

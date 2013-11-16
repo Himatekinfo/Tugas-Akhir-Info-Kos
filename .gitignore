@@ -1,6 +1,8 @@
 [Aa]pp/[Bb]in/**
 Service/uploads/
 
+eclipse/**
+
 # built application files
 *.apk
 *.ap_

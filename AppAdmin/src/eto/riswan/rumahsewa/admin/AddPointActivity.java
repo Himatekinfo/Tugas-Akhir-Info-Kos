@@ -75,23 +75,32 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 	}
 
 	public void btnSavePoint_onClick(View v) {
-		RumahSewa rumahSewa = new RumahSewa();
+		RumahSewa rumahSewa;
+		if (this.rumahSewa != null)
+			rumahSewa = this.rumahSewa;
+		else
+			rumahSewa = new RumahSewa();
 		rumahSewa.address = this.txtAddress.getText().toString();
 		rumahSewa.description = this.txtDescription.getText().toString();
 		rumahSewa.facilities = this.txtFacilities.getText().toString();
 		rumahSewa.ownersName = this.txtOwnersName.getText().toString();
 		rumahSewa.phoneNumber = this.txtPhoneNumber.getText().toString();
 		rumahSewa.rent = Long.valueOf(this.txtRent.getText().toString());
-		rumahSewa.latitude = GeoLocation.getCurrentLocation(this).getLatitude();
-		rumahSewa.longitude = GeoLocation.getCurrentLocation(this).getLongitude();
+		if (!this.asUpdate) {
+			rumahSewa.latitude = GeoLocation.getCurrentLocation(this).getLatitude();
+			rumahSewa.longitude = GeoLocation.getCurrentLocation(this).getLongitude();
+		}
 		rumahSewa.picturePath = this.imageLocation;
 
 		RuntimeExceptionDao<RumahSewa, Long> rumahSewaDao;
 		rumahSewaDao = this.getHelper().getRumahSewaRuntime();
-		rumahSewaDao.create(rumahSewa);
+		if (!this.asUpdate)
+			rumahSewaDao.create(rumahSewa);
+		else
+			rumahSewaDao.update(rumahSewa);
 
 		this.lParemeters = new ArrayList<Parameter>();
-		this.lParemeters.add(new Parameter("id_rumahSewa", rumahSewa.getGlobalId(this)));
+		if (!this.asUpdate) this.lParemeters.add(new Parameter("id_rumahSewa", rumahSewa.getGlobalId(this)));
 		this.lParemeters.add(new Parameter("latitude", rumahSewa.latitude.toString()));
 		this.lParemeters.add(new Parameter("longitude", rumahSewa.longitude.toString()));
 		this.lParemeters.add(new Parameter("namapemilik", rumahSewa.ownersName.toString()));
@@ -209,7 +218,8 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 				e.printStackTrace();
 			}
 			AddPointActivity.url = AddPointActivity.url.replace("create", "update");
-			AddPointActivity.url = AddPointActivity.url + "?id=" + this.rumahSewa.getGlobalId(this);
+			if (!AddPointActivity.url.contains("?id="))
+				AddPointActivity.url = AddPointActivity.url + "?id=" + this.rumahSewa.getGlobalId(this);
 
 			this.txtOwnersName.setText(this.rumahSewa.ownersName);
 			this.txtAddress.setText(this.rumahSewa.address);

@@ -87,7 +87,7 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 			if (rumahSewas.size() > 0) {
 				int count = 0;
 				for (RumahSewa point : rumahSewas)
-					if (point.getDistanceFromLocation(this) < 1000) {
+					if (point.getDistanceFromLocation(this) < 100000) {
 						this.map.addMarker(new MarkerOptions()
 								.position(new LatLng(point.latitude, point.longitude))
 								.title(point.ownersName).draggable(false).snippet(point.id.toString())
@@ -109,24 +109,34 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 
 				@Override
 				public View getInfoWindow(Marker arg0) {
-					RumahSewa r = MapActivity.this.rumahSewaDao.queryForId(Long.parseLong(arg0.getSnippet()));
+					View v = null;
 
-					View v = MapActivity.this.getLayoutInflater().inflate(R.layout.detail_screen, null);
+					try {
+						RumahSewa r = MapActivity.this.rumahSewaDao.queryForId(Long.parseLong(arg0
+								.getSnippet()));
 
-					TextView txtOwnerName = (TextView) v.findViewById(R.idDetail.txtOwnerName);
-					txtOwnerName.setText(r.ownersName);
+						v = MapActivity.this.getLayoutInflater().inflate(R.layout.detail_screen, null);
 
-					TextView txtRent = (TextView) v.findViewById(R.idDetail.txtRent);
-					txtRent.setText(r.rent.toString());
+						TextView txtOwnerName = (TextView) v.findViewById(R.idDetail.txtOwnerName);
+						txtOwnerName.setText(r.ownersName);
 
-					TextView txtPhoneNumber = (TextView) v.findViewById(R.idDetail.txtPhoneNumber);
-					txtPhoneNumber.setText(r.phoneNumber);
+						TextView txtRent = (TextView) v.findViewById(R.idDetail.txtRent);
+						txtRent.setText(r.rent.toString());
 
-					TextView txtFacilities = (TextView) v.findViewById(R.idDetail.txtFacilities);
-					txtFacilities.setText(r.facilities);
+						TextView txtPhoneNumber = (TextView) v.findViewById(R.idDetail.txtPhoneNumber);
+						txtPhoneNumber.setText(r.phoneNumber);
 
-					TextView txtDescription = (TextView) v.findViewById(R.idDetail.txtDescription);
-					txtDescription.setText(r.description);
+						TextView txtFacilities = (TextView) v.findViewById(R.idDetail.txtFacilities);
+						txtFacilities.setText(r.facilities);
+
+						TextView txtDescription = (TextView) v.findViewById(R.idDetail.txtDescription);
+						txtDescription.setText(r.description);
+
+						TextView txtDistance = (TextView) v.findViewById(R.idDetail.txtDistance);
+						txtDistance.setText(String.valueOf(r.getDistanceFromLocation(MapActivity.this)));
+					} catch (Exception ex) {
+						ex.printStackTrace();
+					}
 
 					return v;
 				}
@@ -136,9 +146,13 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 
 				@Override
 				public void onInfoWindowClick(Marker arg0) {
-					Intent x = new Intent(MapActivity.this, DetailPointActivity.class);
-					x.putExtra("Id", (Long.parseLong(arg0.getSnippet())));
-					MapActivity.this.startActivity(x);
+					try {
+						Intent x = new Intent(MapActivity.this, DetailPointActivity.class);
+						x.putExtra("Id", (Long.parseLong(arg0.getSnippet())));
+						MapActivity.this.startActivity(x);
+					} catch (Exception ex) {
+						ex.printStackTrace();
+					}
 				}
 			});
 		}

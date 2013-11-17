@@ -242,7 +242,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 
 		if (rumahSewas.size() > 0) for (RumahSewa point : rumahSewas)
 			// if distance is less than 1000 m, include it in the list
-			if (point.getDistanceFromLocation(this) < 1000) rumahSewasInRange.add(point);
+			if (point.getDistanceFromLocation(this) < 100000) rumahSewasInRange.add(point);
 
 		lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		lv.setAdapter(new ArrayAdapter<RumahSewa>(this.getApplicationContext(), R.layout.item_list_rumahsewa,
@@ -364,6 +364,8 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 							result.isSynchronized = true;
 							if (!rumahSewa.idExists(result.getLocalFromGlobal(ListPointActivity.this)))
 								rumahSewa.createIfNotExists(result);
+							else
+								rumahSewa.update(result);
 
 						} catch (SQLException e) {
 							e.printStackTrace();

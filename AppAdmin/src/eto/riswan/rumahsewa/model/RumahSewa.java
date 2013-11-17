@@ -49,7 +49,7 @@ public class RumahSewa {
 	@DatabaseField(width = 500)
 	public String facilities;
 
-	@SerializedName("deskriprsi")
+	@SerializedName("deskripsi")
 	@DatabaseField(width = 500)
 	public String description;
 

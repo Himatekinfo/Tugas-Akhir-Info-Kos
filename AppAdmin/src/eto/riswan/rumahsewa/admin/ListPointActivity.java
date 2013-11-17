@@ -52,7 +52,7 @@ import eto.riswan.rumahsewa.model.ServiceResponse;
 
 public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 	public static final String url = Global.BaseUrl + "/rumahSewa/";
-	public boolean asAdmin = false;
+	public boolean asAdmin = true;
 
 	Boolean keepAlive = true;
 
@@ -363,8 +363,15 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 									ListPointActivity.this.getApplicationContext()).getRumahSewa();
 
 							result.isSynchronized = true;
-							if (!rumahSewa.idExists(result.getLocalFromGlobal(ListPointActivity.this)))
+							RumahSewa rumahSewaToFind = new RumahSewa();
+							rumahSewaToFind.idRumahSewa = result.idRumahSewa;
+							rumahSewaToFind.createdDate = null;
+							if (rumahSewa.queryForMatching(rumahSewaToFind).size() < 1)
 								rumahSewa.createIfNotExists(result);
+							else {
+								result.id = rumahSewaToFind.id;
+								rumahSewa.update(result);
+							}
 
 						} catch (SQLException e) {
 							e.printStackTrace();

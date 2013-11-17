@@ -98,9 +98,8 @@ class RumahsewaController extends Controller {
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
-
-        if (isset($_POST['Rumahsewa'])) {
-            $model->attributes = $_POST['Rumahsewa'];
+        if (isset($_POST)) {
+            $model->attributes = $_POST;
             if (!$model->save()) {
                 Helper::returnData(array('data' => print_r($model->getErrors(), true)), 500);
                 return;

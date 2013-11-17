@@ -31,7 +31,7 @@ class Rumahsewa extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('id_rumahSewa, alamat, no_telp, hargasewa, foto, fasilitas, deskripsi, created_date', 'required'),
+            array('id_rumahSewa, alamat, hargasewa, foto, fasilitas, deskripsi, created_date', 'required'),
             array('latitude, longitude', 'numerical'),
             array('id_rumahSewa, namapemilik', 'length', 'max' => 50),
             array('alamat, foto, fasilitas, deskripsi', 'length', 'max' => 500),

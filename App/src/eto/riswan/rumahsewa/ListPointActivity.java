@@ -362,10 +362,16 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 									ListPointActivity.this.getApplicationContext()).getRumahSewa();
 
 							result.isSynchronized = true;
-							if (!rumahSewa.idExists(result.getLocalFromGlobal(ListPointActivity.this)))
+							RumahSewa rumahSewaToFind = new RumahSewa();
+							rumahSewaToFind.idRumahSewa = result.idRumahSewa;
+							rumahSewaToFind.createdDate = null;
+							rumahSewaToFind.isSynchronized = null;
+							if (rumahSewa.queryForMatching(rumahSewaToFind).size() < 1)
 								rumahSewa.createIfNotExists(result);
-							else
+							else {
+								result.id = rumahSewaToFind.id;
 								rumahSewa.update(result);
+							}
 
 						} catch (SQLException e) {
 							e.printStackTrace();

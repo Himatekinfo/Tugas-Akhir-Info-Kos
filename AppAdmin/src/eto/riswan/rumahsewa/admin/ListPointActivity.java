@@ -366,6 +366,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 							RumahSewa rumahSewaToFind = new RumahSewa();
 							rumahSewaToFind.idRumahSewa = result.idRumahSewa;
 							rumahSewaToFind.createdDate = null;
+							rumahSewaToFind.isSynchronized = null;
 							if (rumahSewa.queryForMatching(rumahSewaToFind).size() < 1)
 								rumahSewa.createIfNotExists(result);
 							else {

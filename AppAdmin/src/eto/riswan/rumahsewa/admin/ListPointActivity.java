@@ -7,6 +7,7 @@ import java.io.Reader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -300,8 +301,13 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 				TextView txtSewa = (TextView) row.findViewById(R.list.txtSewa);
 				txtSewa.setText(r.rent.toString());
 
+				DecimalFormat formatter = new DecimalFormat("###,###,###,##0.00");
+
 				TextView txtDistance = (TextView) row.findViewById(R.list.txtDistanceFromLocation);
-				txtDistance.setText(String.valueOf(r.getDistanceFromLocation(ListPointActivity.this)));
+				float distanceRaw = r.getDistanceFromLocation(ListPointActivity.this);
+				String distance = formatter.format(distanceRaw < 1000 ? distanceRaw : distanceRaw / 1000);
+				distance = distanceRaw < 1000 ? distance + " m" : distance + " km";
+				txtDistance.setText(distance);
 
 				// TextView txtPrice = (TextView) row.findViewById(R.list.txtRentPrice);
 				// txtPrice.setText(r.rent.toString());

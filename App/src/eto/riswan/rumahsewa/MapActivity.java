@@ -87,7 +87,7 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 			if (rumahSewas.size() > 0) {
 				int count = 0;
 				for (RumahSewa point : rumahSewas)
-					if (point.getDistanceFromLocation(this) < 100000) {
+					if (point.getDistanceFromLocation(this) < 1000) {
 						this.map.addMarker(new MarkerOptions()
 								.position(new LatLng(point.latitude, point.longitude))
 								.title(point.ownersName).draggable(false).snippet(point.id.toString())

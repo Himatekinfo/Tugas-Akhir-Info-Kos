@@ -247,6 +247,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 				+ GeoLocation.getCurrentLocation(this).getLongitude());
 		if (rumahSewas.size() > 0) for (RumahSewa point : rumahSewas) {
 			// if distance is less than 1000 m, include it in the list
+			
 			FileLogging.log(point.ownersName + ": " + point.latitude + ", " + point.longitude + " ("
 					+ point.getDistanceFromLocation(this) + " m)");
 			if (point.getDistanceFromLocation(this) < Global.DistanceRange) rumahSewasInRange.add(point);

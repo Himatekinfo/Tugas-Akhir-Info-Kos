@@ -44,8 +44,10 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.Where;
 
+import eto.riswan.rumahsewa.core.FileLogging;
 import eto.riswan.rumahsewa.core.Parameter;
 import eto.riswan.rumahsewa.helper.Database;
+import eto.riswan.rumahsewa.helper.GeoLocation;
 import eto.riswan.rumahsewa.helper.Global;
 import eto.riswan.rumahsewa.helper.Service;
 import eto.riswan.rumahsewa.model.RumahSewa;
@@ -241,9 +243,14 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 		else
 			rumahSewas = rumahSewaDaoRuntime.queryForAll();
 
-		if (rumahSewas.size() > 0) for (RumahSewa point : rumahSewas)
+		FileLogging.log("Current coordinate: " + GeoLocation.getCurrentLocation(this).getLatitude() + ", "
+				+ GeoLocation.getCurrentLocation(this).getLongitude());
+		if (rumahSewas.size() > 0) for (RumahSewa point : rumahSewas) {
 			// if distance is less than 1000 m, include it in the list
-			if (point.getDistanceFromLocation(this) < 100000) rumahSewasInRange.add(point);
+			FileLogging.log(point.ownersName + ": " + point.latitude + ", " + point.longitude + " ("
+					+ point.getDistanceFromLocation(this) + " m)");
+			if (point.getDistanceFromLocation(this) < Global.DistanceRange) rumahSewasInRange.add(point);
+		}
 
 		lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		lv.setAdapter(new ArrayAdapter<RumahSewa>(this.getApplicationContext(), R.layout.item_list_rumahsewa,
@@ -303,8 +310,10 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 
 				TextView txtDistance = (TextView) row.findViewById(R.list.txtDistanceFromLocation);
 				float distanceRaw = r.getDistanceFromLocation(ListPointActivity.this);
-				String distance = formatter.format(distanceRaw < 1000 ? distanceRaw : distanceRaw / 1000);
-				distance = distanceRaw < 1000 ? distance + " m" : distance + " km";
+				String distance = formatter.format(distanceRaw < Global.DistanceRange ? distanceRaw
+						: distanceRaw / Global.DistanceRange);
+				distance = distanceRaw < Global.DistanceRange ? distance + " m" : distance + " "
+						+ Global.DistanceUnit;
 				txtDistance.setText(distance);
 
 				if (ListPointActivity.this.asAdmin) ListPointActivity.this.registerForContextMenu(row);

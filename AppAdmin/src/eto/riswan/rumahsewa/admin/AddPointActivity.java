@@ -1,7 +1,11 @@
 package eto.riswan.rumahsewa.admin;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
@@ -13,6 +17,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -160,6 +165,20 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 		this.progressBar.show();
 	}
 
+	private String createImageFile() throws IOException {
+		// Create an image file name
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+		String imageFileName = "JPEG_" + timeStamp + "_";
+		File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+		File image = File.createTempFile(imageFileName, /* prefix */
+				".jpg", /* suffix */
+				storageDir /* directory */
+		);
+
+		// Save a file: path for use with ACTION_VIEW intents
+		return image.getAbsolutePath();
+	}
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -180,7 +199,12 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 			imageView.setImageBitmap(BitmapFactory.decodeFile(this.imageLocation));
 
 		} else if ((requestCode == CAMERA_REQUEST) && (resultCode == RESULT_OK)) {
-			this.imageLocation = data.getData().getPath();
+			try {
+				this.imageLocation = this.createImageFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			Bitmap photo = (Bitmap) data.getExtras().get("data");
 			imageView.setImageBitmap(photo);
 		}

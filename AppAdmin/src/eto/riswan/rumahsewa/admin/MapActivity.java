@@ -105,20 +105,23 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 
 					View v = MapActivity.this.getLayoutInflater().inflate(R.layout.detail_screen, null);
 
-					TextView txtOwnerName = (TextView) v.findViewById(R.idDetail.txtOwnerName);
+					TextView txtOwnerName = (TextView) v.findViewById(R.id.txtOwnerName);
 					txtOwnerName.setText(r.ownersName);
 
-					TextView txtRent = (TextView) v.findViewById(R.idDetail.txtRent);
+					TextView txtRent = (TextView) v.findViewById(R.id.txtRent);
 					txtRent.setText(r.rent.toString());
 
-					TextView txtPhoneNumber = (TextView) v.findViewById(R.idDetail.txtPhoneNumber);
+					TextView txtPhoneNumber = (TextView) v.findViewById(R.id.txtPhoneNumber);
 					txtPhoneNumber.setText(r.phoneNumber);
 
-					TextView txtFacilities = (TextView) v.findViewById(R.idDetail.txtFacilities);
+					TextView txtFacilities = (TextView) v.findViewById(R.id.txtFacilities);
 					txtFacilities.setText(r.facilities);
 
-					TextView txtDescription = (TextView) v.findViewById(R.idDetail.txtDescription);
+					TextView txtDescription = (TextView) v.findViewById(R.id.txtDescription);
 					txtDescription.setText(r.description);
+
+					TextView txtDistance = (TextView) v.findViewById(R.id.txtDistance);
+					txtDistance.setText(String.valueOf(r.getDistanceFromLocation(MapActivity.this)) + " km");
 
 					return v;
 				}

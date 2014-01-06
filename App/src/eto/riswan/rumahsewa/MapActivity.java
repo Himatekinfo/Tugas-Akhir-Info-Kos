@@ -133,7 +133,8 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 						txtDescription.setText(r.description);
 
 						TextView txtDistance = (TextView) v.findViewById(R.idDetail.txtDistance);
-						txtDistance.setText(String.valueOf(r.getDistanceFromLocation(MapActivity.this)));
+						txtDistance.setText(String.valueOf(r.getDistanceFromLocation(MapActivity.this))
+								+ " km");
 					} catch (Exception ex) {
 						ex.printStackTrace();
 					}

@@ -30,7 +30,7 @@ public class DetailPointActivity extends OrmLiteBaseActivity<Database> {
 	RumahSewa r;
 
 	private void doCall() {
-		TextView txtPhoneNumber = (TextView) this.v.findViewById(R.idDetail.txtPhoneNumber);
+		TextView txtPhoneNumber = (TextView) this.v.findViewById(R.id.txtPhoneNumber);
 		Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"
 				+ txtPhoneNumber.getText().toString().trim()));
 		this.startActivity(callIntent);
@@ -47,16 +47,16 @@ public class DetailPointActivity extends OrmLiteBaseActivity<Database> {
 		this.r = this.getHelper().getRumahSewaRuntime().queryForId(this.id);
 
 		if (this.r != null) {
-			TextView txtOwnersName = (TextView) this.v.findViewById(R.idDetail.txtOwnerName);
+			TextView txtOwnersName = (TextView) this.v.findViewById(R.id.txtOwnerName);
 			txtOwnersName.setText(this.r.ownersName);
 
-			TextView txtPicture = (TextView) this.v.findViewById(R.idDetail.txtDescription);
+			TextView txtPicture = (TextView) this.v.findViewById(R.id.txtDescription);
 			txtPicture.setText(this.r.description);
 
-			TextView txtPrice = (TextView) this.v.findViewById(R.idDetail.txtFacilities);
+			TextView txtPrice = (TextView) this.v.findViewById(R.id.txtFacilities);
 			txtPrice.setText(this.r.facilities);
 
-			TextView txtPhoneNumber = (TextView) this.v.findViewById(R.idDetail.txtPhoneNumber);
+			TextView txtPhoneNumber = (TextView) this.v.findViewById(R.id.txtPhoneNumber);
 			txtPhoneNumber.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -66,8 +66,12 @@ public class DetailPointActivity extends OrmLiteBaseActivity<Database> {
 			});
 			txtPhoneNumber.setText(this.r.phoneNumber);
 
-			TextView txtRent = (TextView) this.v.findViewById(R.idDetail.txtRent);
+			TextView txtRent = (TextView) this.v.findViewById(R.id.txtRent);
 			txtRent.setText(this.r.rent.toString());
+
+			TextView txtDistance = (TextView) this.v.findViewById(R.id.txtDistance);
+			txtDistance.setText(String.valueOf(this.r.getDistanceFromLocation(DetailPointActivity.this))
+					+ " km");
 
 			Thread thread = new Thread(new Runnable() {
 
@@ -82,11 +86,11 @@ public class DetailPointActivity extends OrmLiteBaseActivity<Database> {
 							@Override
 							public void run() {
 								TextView txtLocation = (TextView) DetailPointActivity.this.v
-										.findViewById(R.idDetail.txtLocation);
+										.findViewById(R.id.txtLocation);
 								txtLocation.setText("");
 
 								ImageView imageLocation = (ImageView) DetailPointActivity.this.v
-										.findViewById(R.idDetail.imageLocation);
+										.findViewById(R.id.imageLocation);
 								imageLocation.setImageBitmap(bmp);
 							}
 						});
@@ -102,7 +106,7 @@ public class DetailPointActivity extends OrmLiteBaseActivity<Database> {
 
 			thread.start();
 
-			Button btnViewDirection = (Button) this.v.findViewById(R.idDetail.btnViewDirection);
+			Button btnViewDirection = (Button) this.v.findViewById(R.id.btnViewDirection);
 			btnViewDirection.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -115,7 +119,7 @@ public class DetailPointActivity extends OrmLiteBaseActivity<Database> {
 				}
 			});
 
-			Button btnCall = (Button) this.v.findViewById(R.idDetail.btnCall);
+			Button btnCall = (Button) this.v.findViewById(R.id.btnCall);
 			btnCall.setOnClickListener(new OnClickListener() {
 
 				@Override

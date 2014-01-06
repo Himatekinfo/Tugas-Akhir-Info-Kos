@@ -26,7 +26,7 @@
                 android:text=":" />
 
             <TextView
-                android:id="@+idDetail/txtOwnerName"
+                android:id="@+id/txtOwnerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="{Nama Pemilik}" />
@@ -48,7 +48,7 @@
                 android:text=":" />
 
             <TextView
-                android:id="@+idDetail/txtRent"
+                android:id="@+id/txtRent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="{Harga Sewa}" />
@@ -72,7 +72,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+idDetail/txtLocation"
+                android:id="@+id/txtLocation"
                 android:text="Image not found." />
         </LinearLayout>
         
@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:id="@+idDetail/imageLocation" />
+                android:id="@+id/imageLocation" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -98,7 +98,7 @@
                 android:text=":" />
 
             <TextView
-                android:id="@+idDetail/txtPhoneNumber"
+                android:id="@+id/txtPhoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="txtPhoneNumber_Click"
@@ -121,7 +121,7 @@
                 android:text=":" />
 
             <TextView
-                android:id="@+idDetail/txtFacilities"
+                android:id="@+id/txtFacilities"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="{Fasilitas}" />
@@ -143,10 +143,32 @@
                 android:text=":" />
 
             <TextView
-                android:id="@+idDetail/txtDescription"
+                android:id="@+id/txtDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="{Deskripsi}" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jarak" />
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/txtDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="{Jarak}" />
         </LinearLayout>
         
         <LinearLayout 
@@ -157,12 +179,12 @@
                 android:layout_weight="1"
 	            android:layout_width="0dp"
 	            android:layout_height="wrap_content"
-	            android:id="@+idDetail/btnViewDirection" />
+	            android:id="@+id/btnViewDirection" />
             <Button android:text="Panggil"
 	            android:layout_weight="1"
 	            android:layout_width="0dp"
 	            android:layout_height="wrap_content"
-	            android:id="@+idDetail/btnCall" />
+	            android:id="@+id/btnCall" />
         </LinearLayout>
     </LinearLayout>
 

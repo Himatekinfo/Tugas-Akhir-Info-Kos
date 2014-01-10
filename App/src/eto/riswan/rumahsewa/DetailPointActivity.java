@@ -70,7 +70,8 @@ public class DetailPointActivity extends OrmLiteBaseActivity<Database> {
 			txtRent.setText(this.r.rent.toString());
 
 			TextView txtDistance = (TextView) this.v.findViewById(R.idDetail.txtDistance);
-			txtDistance.setText(String.valueOf(this.r.getDistanceFromLocation(this)));
+			txtDistance.setText(String.valueOf(this.r.getDistanceFromLocation(this))
+					+ " km");
 
 			Thread thread = new Thread(new Runnable() {
 

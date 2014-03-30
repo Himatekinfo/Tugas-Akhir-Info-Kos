@@ -1,10 +1,35 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_senin"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="@string/action_settings"/>
+        android:title="Senin"/>
+    <item
+        android:id="@+id/action_Selasa"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="Selasa"/>
+    <item
+        android:id="@+id/action_rabu"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="Rabu"/>
+    <item
+        android:id="@+id/action_kamis"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="Kamis"/>
+    <item
+        android:id="@+id/action_jumat"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="Jumat"/>
+    <item
+        android:id="@+id/action_sabtu"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="Sabtu"/>
     <!-- 
     <item
         android:id="@+id/action_login"

@@ -11,7 +11,8 @@
         android:orientation="vertical" >
 
 	<ImageView
-	    android:id="@+idDetail/imageLocation"
+	    android:id="@+id/imageLocation"
+	    android:contentDescription="@string/image_location"
 	    android:layout_width="fill_parent"
 	    android:layout_height="158dp" />
 
@@ -32,7 +33,7 @@
                 android:text=":" />
 
             <TextView
-                android:id="@+idDetail/txtOwnerName"
+                android:id="@+id/txtOwnerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="{Nama Pemilik}" />
@@ -54,7 +55,8 @@
                 android:text=":" />
 
             <TextView
-                android:id="@+idDetail/txtRent"
+                android:id="@+id/txtRent"
+                android:contentDescription="@string/rent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="{Harga Sewa}" />
@@ -76,7 +78,7 @@
                 android:text=":" />
 
             <TextView
-                android:id="@+idDetail/txtPhoneNumber"
+                android:id="@+id/txtPhoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="txtPhoneNumber_Click"
@@ -99,7 +101,7 @@
                 android:text=":" />
 
             <TextView
-                android:id="@+idDetail/txtFacilities"
+                android:id="@+id/txtFacilities"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="{Fasilitas}" />
@@ -121,7 +123,7 @@
                 android:text=":" />
 
             <TextView
-                android:id="@+idDetail/txtDescription"
+                android:id="@+id/txtDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="{Deskripsi}" />
@@ -143,7 +145,7 @@
                 android:text=":" />
 
             <TextView
-                android:id="@+idDetail/txtDistance"
+                android:id="@+id/txtDistance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="{Jarak}" />
@@ -157,12 +159,12 @@
                 android:layout_weight="1"
 	            android:layout_width="0dp"
 	            android:layout_height="wrap_content"
-	            android:id="@+idDetail/btnViewDirection" />
+	            android:id="@+id/btnViewDirection" />
             <Button android:text="Panggil"
 	            android:layout_weight="1"
 	            android:layout_width="0dp"
 	            android:layout_height="wrap_content"
-	            android:id="@+idDetail/btnCall" />
+	            android:id="@+id/btnCall" />
         </LinearLayout>
     </LinearLayout>
 

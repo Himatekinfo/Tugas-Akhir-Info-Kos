@@ -33,4 +33,14 @@ Universitas Ibn Chaldun Bogor (UIC Bogor) didirikan pada tanggal 23 April 1961 d
 	<string name="bantuan">Ada hanya perlu memilih menu Cek Lokasi untuk mengetahui lokasi-lokasi rumah sewa yang berada disekitar anda dalam bentuk peta dan anda bisa melakukan panggiln telpon jika no hp tersedia, anda juga bisa menggunakan fitur rute untuk mengetahui arah menuju lokasi rumah sewa yang anda tuju. Terimakasih</string>
 	<string name="copyright">Copyright 2013 Riswan</string>
 	<string name="aboutNovita">Novita Br Ginting S.Kom., M.Kom. Sebagai pembimbing pendamping Lulusan D3 STIKOM Bina Niaga Bogor,  S1 STMIK RSH Indonesia, S2 Budi Luhur dengan jurusan Management Information System.</string>
+	
+	<string name="image_location" >Gambar Lokasi</string>
+	<string name="owner_name"> Nama Pemilik</string>
+	<string name="rent" > Harga</string>
+	<string name="phone_number"> No Telpon</string>
+	<string name="fasilitas">Fasilitas</string>	
+	<string name="description">Deskripsi</string>
+	<string name="distance">Jarak</string>
+	<string name="view_direction">Direction</string>
+	<string name="btn_call">Panggil</string>
 </resources>

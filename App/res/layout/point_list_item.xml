@@ -4,27 +4,27 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <TextView android:id="@+list/txtOwnersName"
+    <TextView android:id="@+id/txtOwnersName"
         android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
         />
     
-    <ImageView android:id="@+list/imagePicture"
+    <ImageView android:id="@+id/imagePicture"
         android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
         />
     
-    <TextView android:id="@+list/txtRentPrice"
+    <TextView android:id="@+id/txtRentPrice"
         android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
         />
     
-    <TextView android:id="@+list/txtDistanceFromPosition"
+    <TextView android:id="@+id/txtDistanceFromPosition"
         android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
         />
     
-    <TextView android:id="@+list/txtDistanceFromCenter"
+    <TextView android:id="@+id/txtDistanceFromCenter"
         android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
         />

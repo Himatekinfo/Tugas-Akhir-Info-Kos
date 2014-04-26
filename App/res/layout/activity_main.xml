@@ -18,6 +18,7 @@
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
         android:layout_height="168dp"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/ftuika" />
 
     <ImageButton
@@ -37,6 +38,14 @@
         android:contentDescription="@string/cek_lokasi"
         android:onClick="btnInfoRumahSewa_OnClick"
         android:src="@drawable/ceklokasi" />
+
+    <ImageButton
+        android:id="@+id/btnPencarian_onClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/cari_lokasi"
+        android:onClick="btnPencarian_onClick"
+        android:src="@drawable/carilokasi" />
 
     <ImageButton
         android:id="@+id/btnAbout"

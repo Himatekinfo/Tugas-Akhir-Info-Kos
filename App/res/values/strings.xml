@@ -38,7 +38,6 @@ Universitas Ibn Chaldun Bogor (UIC Bogor) didirikan pada tanggal 23 April 1961 d
 	<string name="owner_name"> Nama Pemilik</string>
 	<string name="rent" > Harga</string>
 	<string name="phone_number"> No Telpon</string>
-	<string name="fasilitas">Fasilitas</string>	
 	<string name="description">Deskripsi</string>
 	<string name="distance">Jarak</string>
 	<string name="view_direction">Direction</string>

@@ -15,14 +15,14 @@
         android:padding="3dip" >
 
         <ImageView
-            android:id="@+list/imagePicture"
+            android:id="@+id/imagePicture"
             android:layout_width="50dip"
             android:layout_height="50dip"
             />
                 
         </LinearLayout>
         
-    <TextView android:id="@+list/txtOwnersName"
+    <TextView android:id="@+id/txtOwnersName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/thumbinail"
@@ -33,7 +33,7 @@
         android:textStyle="bold"
         android:typeface="sans"/>
         
-    <TextView android:id="@+list/txtAddress"
+    <TextView android:id="@+id/txtAddress"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+list/txtOwnersName"
@@ -55,11 +55,10 @@
         android:visibility="gone"/>
 
     <TextView
-        android:id="@+list/txtPhone"
+        android:id="@+id/txtPhone"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/icon_telepon"
-        android:layout_below="@list/txtAddress"
+        android:layout_below="@id/txtAddress"
         android:layout_toRightOf="@id/thumbinail"
         android:text="No. Telp rumah sewa"
         android:textColor="#ff0000"
@@ -67,21 +66,21 @@
         android:textStyle="bold" />
     
     <TextView
-        android:id="@+list/txtSewa"
+        android:id="@+id/txtSewa"
         android:text="Harga Sewa"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/thumbinail"
-        android:layout_below="@list/txtPhone"
+        android:layout_below="@id/txtPhone"
         />
     
     <TextView
-        android:id="@+list/txtDistanceFromLocation"
+        android:id="@+id/txtDistanceFromLocation"
         android:text="Harga Sewa"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/thumbinail"
-        android:layout_below="@list/txtSewa"
+        android:layout_below="@id/txtSewa"
         />
 
 </RelativeLayout>

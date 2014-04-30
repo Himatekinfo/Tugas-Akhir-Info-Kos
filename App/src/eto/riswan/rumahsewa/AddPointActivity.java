@@ -205,7 +205,6 @@ public class AddPointActivity extends OrmLiteBaseActivity<Database> {
 				this.rumahSewa = this.getHelper().getRumahSewa()
 						.queryForId(this.getIntent().getExtras().getLong("Id"));
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			AddPointActivity.url = AddPointActivity.url.replace("create", "update");

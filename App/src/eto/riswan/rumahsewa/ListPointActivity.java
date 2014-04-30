@@ -212,6 +212,8 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 		ListView lv = new ListView(this);
 
 		Bundle extras = this.getIntent().getExtras();
+
+		// Set as admin view if parameter asAdmin found
 		if ((extras != null) && extras.containsKey("asAdmin")) this.asAdmin = true;
 
 		RuntimeExceptionDao<RumahSewa, Long> rumahSewaDaoRuntime = this.getHelper().getRumahSewaRuntime();
@@ -228,10 +230,10 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 				Where<RumahSewa, Long> qbWhere = qb.where();
 				if (facilities.size() > 1) {
 					for (String facility : facilities)
-						qbWhere.like("Facilities", facility);
+						qbWhere.like("facilities", facility);
 					qbWhere.or(facilities.size()); // wrap previous like statements in or
-				} else if (facilities.size() == 1) qbWhere.like("Facilities", facilities.get(0));
-				qbWhere.ge("Rent", Long.valueOf(rent[0])).and().le("Rent", Long.valueOf(rent[1]));
+				} else if (facilities.size() == 1) qbWhere.like("facilities", facilities.get(0));
+				qbWhere.ge("rent", Long.valueOf(rent[0])).and().le("rent", Long.valueOf(rent[1]));
 				if (!facilities.isEmpty()) qbWhere.and(2);
 
 				rumahSewas = rumahSewaDaoRuntime.query(qbWhere.prepare());
@@ -247,7 +249,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 				+ GeoLocation.getCurrentLocation(this).getLongitude());
 		if (rumahSewas.size() > 0) for (RumahSewa point : rumahSewas) {
 			// if distance is less than 1000 m, include it in the list
-			
+
 			FileLogging.log(point.ownersName + ": " + point.latitude + ", " + point.longitude + " ("
 					+ point.getDistanceFromLocation(this) + " m)");
 			if (point.getDistanceFromLocation(this) < Global.DistanceRange) rumahSewasInRange.add(point);
@@ -264,7 +266,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 				final RumahSewa r = this.getItem(position);
 				row.setTag(r);
 
-				TextView txtOwnersName = (TextView) row.findViewById(R.list.txtOwnersName);
+				TextView txtOwnersName = (TextView) row.findViewById(R.id.txtOwnersName);
 				txtOwnersName.setText(r.ownersName);
 
 				Thread thread = new Thread(new Runnable() {
@@ -280,8 +282,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 
 								@Override
 								public void run() {
-									ImageView imageLocation = (ImageView) row
-											.findViewById(R.list.imagePicture);
+									ImageView imageLocation = (ImageView) row.findViewById(R.id.imagePicture);
 									imageLocation.setImageBitmap(bmp);
 								}
 							});
@@ -298,18 +299,18 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 				thread.start();
 				ListPointActivity.this.bgActivities.add(thread);
 
-				TextView txtAddress = (TextView) row.findViewById(R.list.txtAddress);
+				TextView txtAddress = (TextView) row.findViewById(R.id.txtAddress);
 				txtAddress.setText(r.address == null ? "" : r.address);
 
-				TextView txtPhone = (TextView) row.findViewById(R.list.txtPhone);
+				TextView txtPhone = (TextView) row.findViewById(R.id.txtPhone);
 				txtPhone.setText(r.phoneNumber);
 
-				TextView txtSewa = (TextView) row.findViewById(R.list.txtSewa);
+				TextView txtSewa = (TextView) row.findViewById(R.id.txtSewa);
 				txtSewa.setText(r.rent.toString());
 
 				DecimalFormat formatter = new DecimalFormat("###,###,###,##0.00");
 
-				TextView txtDistance = (TextView) row.findViewById(R.list.txtDistanceFromLocation);
+				TextView txtDistance = (TextView) row.findViewById(R.id.txtDistanceFromLocation);
 				float distanceRaw = r.getDistanceFromLocation(ListPointActivity.this);
 				String distance = formatter.format(distanceRaw < Global.DistanceRange ? distanceRaw
 						: distanceRaw / Global.DistanceRange);

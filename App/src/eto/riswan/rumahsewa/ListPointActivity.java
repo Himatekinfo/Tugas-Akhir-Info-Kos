@@ -197,6 +197,7 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 			switch (item.getItemId()) {
 				case R.idMap.action_map:
 					Intent intent = new Intent(this, MapActivity.class);
+					intent.putExtras(this.getIntent());
 					this.startActivity(intent);
 					this.keepAlive = false;
 					this.finish();
@@ -247,13 +248,13 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 
 		FileLogging.log("Current coordinate: " + GeoLocation.getCurrentLocation(this).getLatitude() + ", "
 				+ GeoLocation.getCurrentLocation(this).getLongitude());
-		if (rumahSewas.size() > 0) for (RumahSewa point : rumahSewas) {
-			// if distance is less than 1000 m, include it in the list
-
-			FileLogging.log(point.ownersName + ": " + point.latitude + ", " + point.longitude + " ("
-					+ point.getDistanceFromLocation(this) + " m)");
-			if (point.getDistanceFromLocation(this) < Global.DistanceRange) rumahSewasInRange.add(point);
-		}
+		if (rumahSewas.size() > 0)
+			for (RumahSewa point : rumahSewas) {
+				FileLogging.log(point.ownersName + ": " + point.latitude + ", " + point.longitude + " ("
+						+ point.getDistanceFromLocation(this) + " m)");
+				// if distance is less than a certain distance range, include it in the list
+				if (point.getDistanceFromLocation(this) < Global.DistanceRange) rumahSewasInRange.add(point);
+			}
 
 		lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		lv.setAdapter(new ArrayAdapter<RumahSewa>(this.getApplicationContext(), R.layout.item_list_rumahsewa,

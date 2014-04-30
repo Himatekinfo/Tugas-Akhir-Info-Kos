@@ -1,5 +1,6 @@
 package eto.riswan.rumahsewa;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
@@ -21,6 +22,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.Where;
 
 import eto.riswan.rumahsewa.core.OrmLiteBaseFragmentActivity;
 import eto.riswan.rumahsewa.helper.GeoLocation;
@@ -50,6 +53,7 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 		switch (item.getItemId()) {
 			case R.idMap.action_list:
 				Intent intent = new Intent(this, ListPointActivity.class);
+				intent.putExtras(MapActivity.this.getIntent());
 				this.startActivity(intent);
 				break;
 			default:
@@ -76,7 +80,33 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 
 			// Get points
 			this.rumahSewaDao = this.getHelper().getRumahSewaRuntime();
-			List<RumahSewa> rumahSewas = this.rumahSewaDao.queryForAll();
+
+			List<RumahSewa> rumahSewas = new ArrayList<RumahSewa>();
+			Bundle extras = this.getIntent().getExtras();
+			if ((extras != null) && extras.containsKey("rent"))
+				try {
+					ArrayList<String> facilities = extras.getStringArrayList("facilities");
+
+					String[] rent = extras.getString("rent").split("-");
+
+					QueryBuilder<RumahSewa, Long> qb = this.getHelper().getRumahSewa().queryBuilder();
+					Where<RumahSewa, Long> qbWhere = qb.where();
+					if (facilities.size() > 1) {
+						for (String facility : facilities)
+							qbWhere.like("facilities", facility);
+						qbWhere.or(facilities.size()); // wrap previous like statements in or
+					} else if (facilities.size() == 1) qbWhere.like("facilities", facilities.get(0));
+					qbWhere.ge("rent", Long.valueOf(rent[0])).and().le("rent", Long.valueOf(rent[1]));
+					if (!facilities.isEmpty()) qbWhere.and(2);
+
+					rumahSewas = this.rumahSewaDao.query(qbWhere.prepare());
+
+				} catch (java.sql.SQLException e) {
+					// TODO: Exception Handling
+					e.printStackTrace();
+				}
+			else
+				rumahSewas = this.rumahSewaDao.queryForAll();
 
 			this.map.addMarker(new MarkerOptions()
 					.position(
@@ -87,7 +117,7 @@ public class MapActivity extends OrmLiteBaseFragmentActivity {
 			if (rumahSewas.size() > 0) {
 				int count = 0;
 				for (RumahSewa point : rumahSewas)
-					if (point.getDistanceFromLocation(this) < 1000) {
+					if (point.getDistanceFromLocation(this) < Global.DistanceRange) {
 						this.map.addMarker(new MarkerOptions()
 								.position(new LatLng(point.latitude, point.longitude))
 								.title(point.ownersName).draggable(false).snippet(point.id.toString())

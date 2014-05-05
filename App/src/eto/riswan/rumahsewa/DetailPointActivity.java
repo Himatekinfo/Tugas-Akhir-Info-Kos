@@ -3,6 +3,7 @@ package eto.riswan.rumahsewa;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DecimalFormat;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -69,9 +70,14 @@ public class DetailPointActivity extends OrmLiteBaseActivity<Database> {
 			TextView txtRent = (TextView) this.v.findViewById(R.id.txtRent);
 			txtRent.setText(this.r.rent.toString());
 
+			DecimalFormat formatter = new DecimalFormat("###,###,###,##0.00");
+			float distanceRaw = this.r.getDistanceFromLocation(DetailPointActivity.this);
+			distanceRaw = distanceRaw < 1000 ? distanceRaw : distanceRaw / 1000;
+			String distance = formatter.format(distanceRaw);
+			distance = distanceRaw < 1000 ? distance + " m" : distance + " " + Global.DistanceUnit;
+
 			TextView txtDistance = (TextView) this.v.findViewById(R.id.txtDistance);
-			txtDistance.setText(String.valueOf(this.r.getDistanceFromLocation(this))
-					+ " km");
+			txtDistance.setText(distance);
 
 			Thread thread = new Thread(new Runnable() {
 

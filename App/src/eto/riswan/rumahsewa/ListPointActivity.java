@@ -313,10 +313,9 @@ public class ListPointActivity extends OrmLiteBaseActivity<Database> {
 
 				TextView txtDistance = (TextView) row.findViewById(R.id.txtDistanceFromLocation);
 				float distanceRaw = r.getDistanceFromLocation(ListPointActivity.this);
-				String distance = formatter.format(distanceRaw < Global.DistanceRange ? distanceRaw
-						: distanceRaw / Global.DistanceRange);
-				distance = distanceRaw < Global.DistanceRange ? distance + " m" : distance + " "
-						+ Global.DistanceUnit;
+				distanceRaw = distanceRaw < 1000 ? distanceRaw : distanceRaw / 1000;
+				String distance = formatter.format(distanceRaw);
+				distance = distanceRaw < 1000 ? distance + " m" : distance + " " + Global.DistanceUnit;
 				txtDistance.setText(distance);
 
 				if (ListPointActivity.this.asAdmin) ListPointActivity.this.registerForContextMenu(row);

@@ -8,7 +8,7 @@ public class Global {
 	public static final int DistanceRange = 100000000;
 	public static final String DistanceUnit = "km";
 
-	public static final String BaseUrl = "http://svcinfosekolah.rimris.us/index.php";
+	public static final String BaseUrl = "http://rumahsewa.garisoutbound.com/index.php";
 
 	public static LatLng getCenterLocation() {
 		return new LatLng(Global.Latitude, Global.Longitude);
